@@ -7,44 +7,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using restaurante.Tabelas;
 
 namespace restaurante
 {
     public partial class frm_cliente : Form
     {
-        private MySqlDataAdapter adapta = CRUD.PegaTabela("SELECT * FROM Cliente");
-        bool novo = false;
+        bool novo = true;
+        List<Cliente> resC = new List<Cliente>();
+        int pos = 0;
+        Cliente regAtual = new Cliente();
         public frm_cliente()
         {
             InitializeComponent();
-            adapta.InsertCommand = new MySqlCommand("INSERT INTO Cliente (Cpf, Nome, Endereco, Telefone) VALUES (@cpf, @nome, @end, @tel)");
-            adapta.UpdateCommand = new MySqlCommand("UPDATE Cliente SET Nome=@nome, Endereco=@end, Telefone=@tel WHERE Cpf=@cpf");
-            adapta.DeleteCommand = new MySqlCommand("DELETE FROM Cliente WHERE Cpf=@cpf");
-
-            adapta.InsertCommand.Parameters.Add("@cpf", MySqlDbType.Int16, 11, "Cpf");
-            adapta.UpdateCommand.Parameters.Add("@cpf", MySqlDbType.Int16, 11, "Cpf");
-            adapta.DeleteCommand.Parameters.Add("@cpf", MySqlDbType.Int16, 11, "Cpf");
-
-            adapta.InsertCommand.Parameters.Add("@nome", MySqlDbType.VarChar, 50, "Nome");
-            adapta.UpdateCommand.Parameters.Add("@nome", MySqlDbType.VarChar, 50, "Nome");
-
-            adapta.InsertCommand.Parameters.Add("@end", MySqlDbType.VarChar, 45, "Endereco");
-            adapta.UpdateCommand.Parameters.Add("@end", MySqlDbType.VarChar, 45, "Endereco");
-
-            adapta.InsertCommand.Parameters.Add("@tel", MySqlDbType.VarChar, 45, "Telefone");
-            adapta.UpdateCommand.Parameters.Add("@tel", MySqlDbType.VarChar, 45, "Telefone");
-            adapta.Fill(dsCliente);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-                adapta.Update(dsCliente);
+            regAtual.nome = txtNome.Text;
+            regAtual.endereco = txtEnd.Text;
+            regAtual.telefone = txtFone.Text;
+            if (novo && regAtual.cpf == "")
+            {
+                string[] cs = txtCpf.Text.Split(".-".ToArray());
+                string c = "";
+                for (int i=0; i < 4; i++){
+                    c += cs[i];
+                }
+                regAtual.Definir_Cpf(c);
+                if (CRUD.InsereLinha("Cliente", Cliente.Campos(), regAtual.ListarValores()) > 0)
+                    InformaDiag.InformaSalvo();
+            }
+            else
+            {
+                if (CRUD.UpdateLine("Cliente", Cliente.Campos(), regAtual.ListarValores(), "Cpf='" + regAtual.cpf + "'") > 0)
+                    InformaDiag.InformaSalvo();
+            }
+            novo = false;
         }
 
         private void btn_apagar_Click(object sender, EventArgs e)
         {
-            
+            CRUD.ApagaLinha("Cliente", "Cpf='" + regAtual.cpf + "'");
+        }
+
+        private void btn_novo_Click(object sender, EventArgs e)
+        {
+            txtCpf.Text = "";
+            txtEnd.Text = "";
+            txtFone.Text = "";
+            txtNome.Text = "";
+            novo = true;
+            regAtual.Definir_Cpf("");
         }
     }
 }

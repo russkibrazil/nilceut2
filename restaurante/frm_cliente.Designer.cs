@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCpf = new System.Windows.Forms.MaskedTextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.txtEnd = new System.Windows.Forms.TextBox();
+            this.txtFone = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_novo = new System.Windows.Forms.Button();
             this.btn_salva = new System.Windows.Forms.Button();
@@ -53,22 +53,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "CPF";
             // 
-            // maskedTextBox1
+            // txtCpf
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(105, 16);
-            this.maskedTextBox1.Mask = "000,000,000-00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(127, 26);
-            this.maskedTextBox1.TabIndex = 1;
+            this.txtCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCpf.Location = new System.Drawing.Point(105, 16);
+            this.txtCpf.Mask = "000,000,000-00";
+            this.txtCpf.Name = "txtCpf";
+            this.txtCpf.Size = new System.Drawing.Size(127, 26);
+            this.txtCpf.TabIndex = 1;
             // 
-            // textBox1
+            // txtNome
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(105, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(428, 26);
-            this.textBox1.TabIndex = 2;
+            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.Location = new System.Drawing.Point(105, 48);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(428, 26);
+            this.txtNome.TabIndex = 2;
             // 
             // label2
             // 
@@ -90,22 +90,22 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Endereço";
             // 
-            // textBox2
+            // txtEnd
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(105, 80);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(428, 26);
-            this.textBox2.TabIndex = 4;
+            this.txtEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEnd.Location = new System.Drawing.Point(105, 80);
+            this.txtEnd.Name = "txtEnd";
+            this.txtEnd.Size = new System.Drawing.Size(428, 26);
+            this.txtEnd.TabIndex = 4;
             // 
-            // maskedTextBox2
+            // txtFone
             // 
-            this.maskedTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox2.Location = new System.Drawing.Point(105, 112);
-            this.maskedTextBox2.Mask = "(00) 90000-0000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(127, 26);
-            this.maskedTextBox2.TabIndex = 7;
+            this.txtFone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFone.Location = new System.Drawing.Point(105, 112);
+            this.txtFone.Mask = "(00) 90000-0000";
+            this.txtFone.Name = "txtFone";
+            this.txtFone.Size = new System.Drawing.Size(127, 26);
+            this.txtFone.TabIndex = 7;
             // 
             // label4
             // 
@@ -125,6 +125,7 @@
             this.btn_novo.TabIndex = 8;
             this.btn_novo.Text = "Novo";
             this.btn_novo.UseVisualStyleBackColor = true;
+            this.btn_novo.Click += new System.EventHandler(this.btn_novo_Click);
             // 
             // btn_salva
             // 
@@ -159,13 +160,13 @@
             this.Controls.Add(this.btn_apagar);
             this.Controls.Add(this.btn_salva);
             this.Controls.Add(this.btn_novo);
-            this.Controls.Add(this.maskedTextBox2);
+            this.Controls.Add(this.txtFone);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtEnd);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.txtCpf);
             this.Controls.Add(this.label1);
             this.Name = "frm_cliente";
             this.Text = "Clientes";
@@ -178,12 +179,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.MaskedTextBox txtCpf;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.TextBox txtEnd;
+        private System.Windows.Forms.MaskedTextBox txtFone;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_novo;
         private System.Windows.Forms.Button btn_salva;

@@ -31,19 +31,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtEnd = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtCtps = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.txtCpf = new System.Windows.Forms.MaskedTextBox();
+            this.txtSalario = new System.Windows.Forms.MaskedTextBox();
+            this.txtAdmissao = new System.Windows.Forms.DateTimePicker();
+            this.txtTel = new System.Windows.Forms.MaskedTextBox();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnSalva = new System.Windows.Forms.Button();
+            this.btnApagar = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -76,13 +79,13 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Telefone";
             // 
-            // textBox6
+            // txtNome
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(96, 42);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(457, 26);
-            this.textBox6.TabIndex = 11;
+            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.Location = new System.Drawing.Point(96, 42);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(457, 26);
+            this.txtNome.TabIndex = 11;
             // 
             // label6
             // 
@@ -94,14 +97,6 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Nome";
             // 
-            // textBox7
-            // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(96, 170);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(127, 26);
-            this.textBox7.TabIndex = 13;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -112,13 +107,13 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Setor";
             // 
-            // textBox8
+            // txtEnd
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(96, 74);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(457, 26);
-            this.textBox8.TabIndex = 15;
+            this.txtEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEnd.Location = new System.Drawing.Point(96, 74);
+            this.txtEnd.Name = "txtEnd";
+            this.txtEnd.Size = new System.Drawing.Size(457, 26);
+            this.txtEnd.TabIndex = 15;
             // 
             // label8
             // 
@@ -130,13 +125,13 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Endereço";
             // 
-            // textBox9
+            // txtCtps
             // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(96, 138);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(127, 26);
-            this.textBox9.TabIndex = 17;
+            this.txtCtps.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCtps.Location = new System.Drawing.Point(96, 138);
+            this.txtCtps.Name = "txtCtps";
+            this.txtCtps.Size = new System.Drawing.Size(127, 26);
+            this.txtCtps.TabIndex = 17;
             // 
             // label9
             // 
@@ -158,59 +153,101 @@
             this.label10.TabIndex = 18;
             this.label10.Text = "Data Admissão";
             // 
-            // maskedTextBox1
+            // txtCpf
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(96, 11);
-            this.maskedTextBox1.Mask = "900,000,000-00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(127, 26);
-            this.maskedTextBox1.TabIndex = 20;
+            this.txtCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCpf.Location = new System.Drawing.Point(96, 11);
+            this.txtCpf.Mask = "900,000,000-00";
+            this.txtCpf.Name = "txtCpf";
+            this.txtCpf.Size = new System.Drawing.Size(127, 26);
+            this.txtCpf.TabIndex = 20;
             // 
-            // maskedTextBox2
+            // txtSalario
             // 
-            this.maskedTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox2.Location = new System.Drawing.Point(453, 106);
-            this.maskedTextBox2.Mask = "999999.90";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 26);
-            this.maskedTextBox2.TabIndex = 21;
+            this.txtSalario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalario.Location = new System.Drawing.Point(453, 106);
+            this.txtSalario.Mask = "999999.90";
+            this.txtSalario.Name = "txtSalario";
+            this.txtSalario.Size = new System.Drawing.Size(100, 26);
+            this.txtSalario.TabIndex = 21;
             // 
-            // dateTimePicker1
+            // txtAdmissao
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(453, 138);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(100, 26);
-            this.dateTimePicker1.TabIndex = 22;
+            this.txtAdmissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtAdmissao.Location = new System.Drawing.Point(453, 138);
+            this.txtAdmissao.Name = "txtAdmissao";
+            this.txtAdmissao.Size = new System.Drawing.Size(100, 26);
+            this.txtAdmissao.TabIndex = 22;
             // 
-            // maskedTextBox3
+            // txtTel
             // 
-            this.maskedTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox3.Location = new System.Drawing.Point(96, 106);
-            this.maskedTextBox3.Mask = "(00) 90000-0000";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(127, 26);
-            this.maskedTextBox3.TabIndex = 23;
+            this.txtTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTel.Location = new System.Drawing.Point(96, 106);
+            this.txtTel.Mask = "(00) 90000-0000";
+            this.txtTel.Name = "txtTel";
+            this.txtTel.Size = new System.Drawing.Size(127, 26);
+            this.txtTel.TabIndex = 23;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(609, 42);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 23);
+            this.btnNovo.TabIndex = 24;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // btnSalva
+            // 
+            this.btnSalva.Location = new System.Drawing.Point(609, 71);
+            this.btnSalva.Name = "btnSalva";
+            this.btnSalva.Size = new System.Drawing.Size(75, 23);
+            this.btnSalva.TabIndex = 25;
+            this.btnSalva.Text = "Salvar";
+            this.btnSalva.UseVisualStyleBackColor = true;
+            this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
+            // 
+            // btnApagar
+            // 
+            this.btnApagar.Location = new System.Drawing.Point(609, 103);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(75, 23);
+            this.btnApagar.TabIndex = 26;
+            this.btnApagar.Text = "Apagar";
+            this.btnApagar.UseVisualStyleBackColor = true;
+            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(96, 171);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(127, 26);
+            this.comboBox1.TabIndex = 27;
             // 
             // frmFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 228);
-            this.Controls.Add(this.maskedTextBox3);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.maskedTextBox1);
+            this.ClientSize = new System.Drawing.Size(696, 228);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnApagar);
+            this.Controls.Add(this.btnSalva);
+            this.Controls.Add(this.btnNovo);
+            this.Controls.Add(this.txtTel);
+            this.Controls.Add(this.txtAdmissao);
+            this.Controls.Add(this.txtSalario);
+            this.Controls.Add(this.txtCpf);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.txtCtps);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.txtEnd);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -227,19 +264,22 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtEnd;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtCtps;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.MaskedTextBox txtCpf;
+        private System.Windows.Forms.MaskedTextBox txtSalario;
+        private System.Windows.Forms.DateTimePicker txtAdmissao;
+        private System.Windows.Forms.MaskedTextBox txtTel;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnSalva;
+        private System.Windows.Forms.Button btnApagar;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

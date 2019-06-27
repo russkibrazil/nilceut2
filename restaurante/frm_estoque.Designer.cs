@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtItem = new System.Windows.Forms.TextBox();
+            this.txtVencimento = new System.Windows.Forms.DateTimePicker();
+            this.txtQuantidade = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtUnidade = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnSalva = new System.Windows.Forms.Button();
+            this.btnApaga = new System.Windows.Forms.Button();
+            this.txtResponsavel = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -50,31 +53,31 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Item";
             // 
-            // textBox1
+            // txtItem
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(143, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(291, 26);
-            this.textBox1.TabIndex = 1;
+            this.txtItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItem.Location = new System.Drawing.Point(143, 9);
+            this.txtItem.Name = "txtItem";
+            this.txtItem.Size = new System.Drawing.Size(291, 26);
+            this.txtItem.TabIndex = 1;
             // 
-            // dateTimePicker1
+            // txtVencimento
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(143, 76);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(122, 26);
-            this.dateTimePicker1.TabIndex = 2;
+            this.txtVencimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVencimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtVencimento.Location = new System.Drawing.Point(143, 76);
+            this.txtVencimento.Name = "txtVencimento";
+            this.txtVencimento.Size = new System.Drawing.Size(122, 26);
+            this.txtVencimento.TabIndex = 2;
             // 
-            // maskedTextBox1
+            // txtQuantidade
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(143, 38);
-            this.maskedTextBox1.Mask = "999999.90";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 26);
-            this.maskedTextBox1.TabIndex = 3;
+            this.txtQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantidade.Location = new System.Drawing.Point(143, 38);
+            this.txtQuantidade.Mask = "999999.90";
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(100, 26);
+            this.txtQuantidade.TabIndex = 3;
             // 
             // label2
             // 
@@ -96,13 +99,13 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Quantidade";
             // 
-            // textBox2
+            // txtUnidade
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(337, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(97, 26);
-            this.textBox2.TabIndex = 7;
+            this.txtUnidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnidade.Location = new System.Drawing.Point(337, 41);
+            this.txtUnidade.Name = "txtUnidade";
+            this.txtUnidade.Size = new System.Drawing.Size(97, 26);
+            this.txtUnidade.TabIndex = 7;
             // 
             // label4
             // 
@@ -114,14 +117,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Unidade";
             // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(143, 108);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(291, 26);
-            this.textBox3.TabIndex = 9;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -132,20 +127,62 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Responsável";
             // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(504, 15);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 23);
+            this.btnNovo.TabIndex = 10;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // btnSalva
+            // 
+            this.btnSalva.Location = new System.Drawing.Point(504, 44);
+            this.btnSalva.Name = "btnSalva";
+            this.btnSalva.Size = new System.Drawing.Size(75, 23);
+            this.btnSalva.TabIndex = 11;
+            this.btnSalva.Text = "Salvar";
+            this.btnSalva.UseVisualStyleBackColor = true;
+            this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
+            // 
+            // btnApaga
+            // 
+            this.btnApaga.Location = new System.Drawing.Point(504, 73);
+            this.btnApaga.Name = "btnApaga";
+            this.btnApaga.Size = new System.Drawing.Size(75, 23);
+            this.btnApaga.TabIndex = 12;
+            this.btnApaga.Text = "Apagar";
+            this.btnApaga.UseVisualStyleBackColor = true;
+            this.btnApaga.Click += new System.EventHandler(this.btnApaga_Click);
+            // 
+            // txtResponsavel
+            // 
+            this.txtResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResponsavel.FormattingEnabled = true;
+            this.txtResponsavel.Location = new System.Drawing.Point(143, 108);
+            this.txtResponsavel.Name = "txtResponsavel";
+            this.txtResponsavel.Size = new System.Drawing.Size(291, 26);
+            this.txtResponsavel.TabIndex = 13;
+            // 
             // frm_estoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 159);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtResponsavel);
+            this.Controls.Add(this.btnApaga);
+            this.Controls.Add(this.btnSalva);
+            this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtUnidade);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtQuantidade);
+            this.Controls.Add(this.txtVencimento);
+            this.Controls.Add(this.txtItem);
             this.Controls.Add(this.label1);
             this.Name = "frm_estoque";
             this.Text = "Controle de estoque";
@@ -157,14 +194,17 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.TextBox txtItem;
+        private System.Windows.Forms.DateTimePicker txtVencimento;
+        private System.Windows.Forms.MaskedTextBox txtQuantidade;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtUnidade;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnSalva;
+        private System.Windows.Forms.Button btnApaga;
+        private System.Windows.Forms.ComboBox txtResponsavel;
     }
 }

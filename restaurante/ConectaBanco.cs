@@ -109,7 +109,7 @@ namespace restaurante
             }
             return impacto;
         }
-        /*public static int InsereLinha(string tabela, List<string> campos, List<string> valores)
+        public static int InsereLinha(string tabela, List<string> campos, List<string> valores)
         {
             string s; 
             string query = "INSERT INTO " + tabela + " (";
@@ -171,7 +171,7 @@ namespace restaurante
             if (filtro != "")
                 query += " WHERE " + filtro;
             return EnviaComando(query);
-        }*/
+        }
         public static  int ApagaLinha(string tabela, string filtro)
         {
             string query = "DELETE FROM " + tabela + " WHERE " + filtro;
