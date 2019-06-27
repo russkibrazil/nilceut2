@@ -36,6 +36,11 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btn_novo = new System.Windows.Forms.Button();
+            this.btn_salva = new System.Windows.Forms.Button();
+            this.btn_apagar = new System.Windows.Forms.Button();
+            this.dsCliente = new System.Data.DataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -112,11 +117,48 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Telefone";
             // 
+            // btn_novo
+            // 
+            this.btn_novo.Location = new System.Drawing.Point(575, 16);
+            this.btn_novo.Name = "btn_novo";
+            this.btn_novo.Size = new System.Drawing.Size(75, 23);
+            this.btn_novo.TabIndex = 8;
+            this.btn_novo.Text = "Novo";
+            this.btn_novo.UseVisualStyleBackColor = true;
+            // 
+            // btn_salva
+            // 
+            this.btn_salva.Location = new System.Drawing.Point(575, 45);
+            this.btn_salva.Name = "btn_salva";
+            this.btn_salva.Size = new System.Drawing.Size(75, 23);
+            this.btn_salva.TabIndex = 9;
+            this.btn_salva.Text = "Salvar";
+            this.btn_salva.UseVisualStyleBackColor = true;
+            this.btn_salva.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btn_apagar
+            // 
+            this.btn_apagar.Location = new System.Drawing.Point(576, 74);
+            this.btn_apagar.Name = "btn_apagar";
+            this.btn_apagar.Size = new System.Drawing.Size(75, 23);
+            this.btn_apagar.TabIndex = 10;
+            this.btn_apagar.Text = "Apagar";
+            this.btn_apagar.UseVisualStyleBackColor = true;
+            this.btn_apagar.Click += new System.EventHandler(this.btn_apagar_Click);
+            // 
+            // dsCliente
+            // 
+            this.dsCliente.CaseSensitive = true;
+            this.dsCliente.DataSetName = "dsCliente";
+            // 
             // frm_cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 169);
+            this.ClientSize = new System.Drawing.Size(669, 169);
+            this.Controls.Add(this.btn_apagar);
+            this.Controls.Add(this.btn_salva);
+            this.Controls.Add(this.btn_novo);
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -127,6 +169,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_cliente";
             this.Text = "Clientes";
+            ((System.ComponentModel.ISupportInitialize)(this.dsCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,5 +185,9 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_novo;
+        private System.Windows.Forms.Button btn_salva;
+        private System.Windows.Forms.Button btn_apagar;
+        private System.Data.DataSet dsCliente;
     }
 }

@@ -16,7 +16,7 @@ namespace restaurante
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmFuncionario());
+            Application.Run(new frm_main());
         }
     }
 }
