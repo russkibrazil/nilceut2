@@ -32,6 +32,12 @@
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refeiçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vendasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cardápioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,7 +45,8 @@
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastroToolStripMenuItem});
+            this.cadastroToolStripMenuItem,
+            this.vendasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
@@ -50,7 +57,10 @@
             // 
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clienteToolStripMenuItem,
-            this.funcionarioToolStripMenuItem});
+            this.funcionarioToolStripMenuItem,
+            this.setorToolStripMenuItem,
+            this.refeiçãoToolStripMenuItem,
+            this.estoqueToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.cadastroToolStripMenuItem.Text = "Cadastro";
@@ -68,6 +78,50 @@
             this.funcionarioToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.funcionarioToolStripMenuItem.Text = "Funcionário";
             this.funcionarioToolStripMenuItem.Click += new System.EventHandler(this.funcionarioToolStripMenuItem_Click);
+            // 
+            // setorToolStripMenuItem
+            // 
+            this.setorToolStripMenuItem.Name = "setorToolStripMenuItem";
+            this.setorToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.setorToolStripMenuItem.Text = "Setor";
+            this.setorToolStripMenuItem.Click += new System.EventHandler(this.setorToolStripMenuItem_Click);
+            // 
+            // refeiçãoToolStripMenuItem
+            // 
+            this.refeiçãoToolStripMenuItem.Name = "refeiçãoToolStripMenuItem";
+            this.refeiçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.refeiçãoToolStripMenuItem.Text = "Refeição";
+            this.refeiçãoToolStripMenuItem.Click += new System.EventHandler(this.refeiçãoToolStripMenuItem_Click);
+            // 
+            // vendasToolStripMenuItem
+            // 
+            this.vendasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.vendasToolStripMenuItem1,
+            this.cardápioToolStripMenuItem});
+            this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
+            this.vendasToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
+            this.vendasToolStripMenuItem.Text = "Vendas";
+            // 
+            // vendasToolStripMenuItem1
+            // 
+            this.vendasToolStripMenuItem1.Name = "vendasToolStripMenuItem1";
+            this.vendasToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.vendasToolStripMenuItem1.Text = "Vendas";
+            this.vendasToolStripMenuItem1.Click += new System.EventHandler(this.vendasToolStripMenuItem1_Click);
+            // 
+            // cardápioToolStripMenuItem
+            // 
+            this.cardápioToolStripMenuItem.Name = "cardápioToolStripMenuItem";
+            this.cardápioToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.cardápioToolStripMenuItem.Text = "Cardápio";
+            this.cardápioToolStripMenuItem.Click += new System.EventHandler(this.cardápioToolStripMenuItem_Click);
+            // 
+            // estoqueToolStripMenuItem
+            // 
+            this.estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
+            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.estoqueToolStripMenuItem.Text = "Estoque";
+            this.estoqueToolStripMenuItem.Click += new System.EventHandler(this.estoqueToolStripMenuItem_Click);
             // 
             // frm_main
             // 
@@ -91,5 +145,11 @@
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem funcionarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refeiçãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vendasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vendasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cardápioToolStripMenuItem;
     }
 }

@@ -30,6 +30,7 @@ namespace restaurante
             txtResponsavel.Text = "";
             txtUnidade.Text = "";
             novo = true;
+            regAtual.Definir_item("");
         }
 
         private void btnSalva_Click(object sender, EventArgs e)

@@ -27,6 +27,7 @@ namespace restaurante
             txtSetor.Text =  "";
             txtSupervisor.Text = "";
             regAtual.DefinirSetor("");
+            novo = true;
         }
 
         private void btnSalva_Click(object sender, EventArgs e)

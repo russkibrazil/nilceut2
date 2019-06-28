@@ -31,6 +31,7 @@ namespace restaurante
             txtSalario.Text = "";
             txtTel.Text = "";
             novo = true;
+            regAtual.Definir_Cpf("");
         }
 
         private void btnSalva_Click(object sender, EventArgs e)
