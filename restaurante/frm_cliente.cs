@@ -15,11 +15,21 @@ namespace restaurante
     {
         bool novo = true;
         List<Cliente> resC = new List<Cliente>();
-        int pos = 0;
         Cliente regAtual = new Cliente();
         public frm_cliente()
         {
             InitializeComponent();
+        }
+
+        private string RetornaCpf()
+        {
+            string[] cs = txtCpf.Text.Split(".-".ToArray());
+            string c = "";
+            for (int i = 0; i < 4; i++)
+            {
+                c += cs[i];
+            }
+            return c;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -29,12 +39,7 @@ namespace restaurante
             regAtual.telefone = txtFone.Text;
             if (novo && regAtual.cpf == "")
             {
-                string[] cs = txtCpf.Text.Split(".-".ToArray());
-                string c = "";
-                for (int i=0; i < 4; i++){
-                    c += cs[i];
-                }
-                regAtual.Definir_Cpf(c);
+                regAtual.Definir_Cpf(RetornaCpf());
                 if (CRUD.InsereLinha("Cliente", Cliente.Campos(), regAtual.ListarValores()) > 0)
                     InformaDiag.InformaSalvo();
             }
@@ -59,6 +64,28 @@ namespace restaurante
             txtNome.Text = "";
             novo = true;
             regAtual.Definir_Cpf("");
+        }
+
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            string psq = RetornaCpf();
+            if (psq.Length == 14)
+            {
+                resC = Cliente.ConverteObject(CRUD.SelecionarTabela("Cliente", Cliente.Campos(), "Cpf='" + psq + "'"));
+                if (resC.Count() > 0)
+                {
+                    regAtual = resC.First();
+                    MostraDados();
+                }
+            }
+        }
+
+        private void MostraDados()
+        {
+            txtCpf.Text = regAtual.cpf;
+            txtNome.Text = regAtual.nome;
+            txtEnd.Text = regAtual.endereco;
+            txtFone.Text = regAtual.telefone;
         }
     }
 }

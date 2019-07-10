@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtItem = new System.Windows.Forms.TextBox();
             this.txtVencimento = new System.Windows.Forms.DateTimePicker();
@@ -41,6 +42,12 @@
             this.btnSalva = new System.Windows.Forms.Button();
             this.btnApaga = new System.Windows.Forms.Button();
             this.txtResponsavel = new System.Windows.Forms.ComboBox();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnPrimeiro = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnProximo = new System.Windows.Forms.Button();
+            this.btnUltimo = new System.Windows.Forms.Button();
+            this.timerResponsavel = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -129,7 +136,7 @@
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(504, 15);
+            this.btnNovo.Location = new System.Drawing.Point(555, 9);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 23);
             this.btnNovo.TabIndex = 10;
@@ -139,7 +146,7 @@
             // 
             // btnSalva
             // 
-            this.btnSalva.Location = new System.Drawing.Point(504, 44);
+            this.btnSalva.Location = new System.Drawing.Point(555, 38);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.Size = new System.Drawing.Size(75, 23);
             this.btnSalva.TabIndex = 11;
@@ -149,7 +156,7 @@
             // 
             // btnApaga
             // 
-            this.btnApaga.Location = new System.Drawing.Point(504, 73);
+            this.btnApaga.Location = new System.Drawing.Point(555, 67);
             this.btnApaga.Name = "btnApaga";
             this.btnApaga.Size = new System.Drawing.Size(75, 23);
             this.btnApaga.TabIndex = 12;
@@ -165,12 +172,78 @@
             this.txtResponsavel.Name = "txtResponsavel";
             this.txtResponsavel.Size = new System.Drawing.Size(291, 26);
             this.txtResponsavel.TabIndex = 13;
+            this.txtResponsavel.SelectedIndexChanged += new System.EventHandler(this.txtResponsavel_SelectedIndexChanged);
+            this.txtResponsavel.TextChanged += new System.EventHandler(this.txtResponsavel_TextChanged);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(440, 9);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 14;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // btnPrimeiro
+            // 
+            this.btnPrimeiro.Enabled = false;
+            this.btnPrimeiro.Location = new System.Drawing.Point(655, 9);
+            this.btnPrimeiro.Name = "btnPrimeiro";
+            this.btnPrimeiro.Size = new System.Drawing.Size(75, 23);
+            this.btnPrimeiro.TabIndex = 15;
+            this.btnPrimeiro.Text = "|<";
+            this.btnPrimeiro.UseVisualStyleBackColor = true;
+            this.btnPrimeiro.Click += new System.EventHandler(this.btnPrimeiro_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Enabled = false;
+            this.btnAnterior.Location = new System.Drawing.Point(655, 38);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.TabIndex = 16;
+            this.btnAnterior.Text = "<";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnProximo
+            // 
+            this.btnProximo.Enabled = false;
+            this.btnProximo.Location = new System.Drawing.Point(655, 67);
+            this.btnProximo.Name = "btnProximo";
+            this.btnProximo.Size = new System.Drawing.Size(75, 23);
+            this.btnProximo.TabIndex = 17;
+            this.btnProximo.Text = ">";
+            this.btnProximo.UseVisualStyleBackColor = true;
+            this.btnProximo.Click += new System.EventHandler(this.btnProximo_Click);
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Enabled = false;
+            this.btnUltimo.Location = new System.Drawing.Point(655, 96);
+            this.btnUltimo.Name = "btnUltimo";
+            this.btnUltimo.Size = new System.Drawing.Size(75, 23);
+            this.btnUltimo.TabIndex = 18;
+            this.btnUltimo.Text = ">|";
+            this.btnUltimo.UseVisualStyleBackColor = true;
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            // 
+            // timerResponsavel
+            // 
+            this.timerResponsavel.Interval = 700;
+            this.timerResponsavel.Tick += new System.EventHandler(this.timerResponsavel_Tick);
             // 
             // frm_estoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 159);
+            this.ClientSize = new System.Drawing.Size(745, 152);
+            this.Controls.Add(this.btnUltimo);
+            this.Controls.Add(this.btnProximo);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.btnPrimeiro);
+            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.txtResponsavel);
             this.Controls.Add(this.btnApaga);
             this.Controls.Add(this.btnSalva);
@@ -206,5 +279,11 @@
         private System.Windows.Forms.Button btnSalva;
         private System.Windows.Forms.Button btnApaga;
         private System.Windows.Forms.ComboBox txtResponsavel;
+        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Button btnPrimeiro;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnProximo;
+        private System.Windows.Forms.Button btnUltimo;
+        private System.Windows.Forms.Timer timerResponsavel;
     }
 }

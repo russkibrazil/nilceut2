@@ -14,7 +14,8 @@ namespace restaurante
     public partial class frmFuncionario : Form
     {
         bool novo = true;
-        List<Funcionario> resF = new List<Funcionario>();
+        List<Setor> resS = new List<Setor>();
+        Setor SetSelec = new Setor();
         Funcionario regAtual = new Funcionario();
         int pos = 0;
         public frmFuncionario()
@@ -41,6 +42,7 @@ namespace restaurante
             regAtual.nome = txtNome.Text;
             regAtual.salario = double.Parse(txtSalario.Text);
             regAtual.telefone = txtTel.Text;
+            regAtual.admissao = txtAdmissao.Value;
             if (novo && regAtual.cpf != "")
             {
                 string[] cs = txtCpf.Text.Split(".-".ToArray());
@@ -64,6 +66,43 @@ namespace restaurante
         private void btnApagar_Click(object sender, EventArgs e)
         {
             CRUD.ApagaLinha("Funcionario", "Cpf='" + regAtual.cpf + "'");
+        }
+
+        private void btnLimpa_Click(object sender, EventArgs e)
+        {
+            txtCpf.Text = "";
+            txtCtps.Text = "";
+            txtEnd.Text = "";
+            txtNome.Text = "";
+            txtSalario.Text = "";
+            comboSetor.Text = "";
+            txtTel.Text = "";
+            txtAdmissao.Value = DateTime.Today;
+        }
+
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            string[] cs = txtCpf.Text.Split(".-".ToArray());
+            string c = "";
+            for (int i = 0; i < 4; i++)
+            {
+                c += cs[i];
+            }
+            regAtual = Funcionario.ConverteObject(CRUD.SelecionarTabela("Funcionario", Funcionario.Campos(), "Cpf='" + c + "'")).First();
+            if (regAtual.nome == "")
+                InformaDiag.Erro("Nenhum registro encontrado!");
+            else
+            {
+                txtCpf.Text = regAtual.cpf;
+                txtCtps.Text = regAtual.ctps;
+                txtEnd.Text = regAtual.endereco;
+                txtNome.Text = regAtual.nome;
+                txtSalario.Text = regAtual.salario.ToString();
+                txtTel.Text = regAtual.telefone;
+                comboSetor.Text = regAtual.setor;
+                txtAdmissao.Value = regAtual.admissao;
+                novo = false;
+            }
         }
     }
 }

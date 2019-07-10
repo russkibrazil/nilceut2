@@ -15,6 +15,8 @@ namespace restaurante
     {
         bool novo = true;
         List<Vendas> resVendas = new List<Vendas>();
+        List<Cliente> resCli = new List<Cliente>();
+        List<Funcionario> resFuncio = new List<Funcionario>();
         Vendas regAtual = new Vendas();
         int pos = 0;
 
@@ -28,6 +30,7 @@ namespace restaurante
             txtCliente.Text = "";
             txtNota.Text = "";
             txtVendedor.Text = "";
+            novo = true;
         }
 
         private void btnSalva_Click(object sender, EventArgs e)
@@ -45,6 +48,111 @@ namespace restaurante
                     InformaDiag.InformaSalvo();
             }
             novo = false;
+        }
+
+        private void MostraDados()
+        {
+            txtNota.Text = regAtual.nf.ToString();
+            txtData.Value = regAtual.dtCompra;
+            //txtCliente
+            //txtVendedor
+        }
+
+        private void btnProcurarNF_Click(object sender, EventArgs e)
+        {
+            string psq = txtNota.Text;
+            if (psq.Length > 2)
+            {
+                resVendas = Vendas.ConverteObject(CRUD.SelecionarTabela("Vendas", Vendas.Campos(), "NotaFiscal=" + psq));
+                if (resVendas.Count() > 0)
+                {
+                    regAtual = resVendas.First();
+                    pos = 0;
+                    MostraDados();
+                }
+            }
+        }
+
+        private void txtCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (timerCliente.Enabled)
+            {
+                timerCliente.Enabled = false;
+                timerCliente.Enabled = true;
+            }
+            else
+            {
+                timerCliente.Enabled = true;
+            }
+        }
+
+        private void txtCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (txtCliente.Text != "")
+            {
+                regAtual.cliente = resCli.Find(f => f.nome == txtCliente.Text).cpf;
+            }
+            else
+            {
+                regAtual.cliente = "";
+            }
+        }
+
+        private void timerCliente_Tick(object sender, EventArgs e)
+        {
+            string pesquisa = txtCliente.Text;
+            txtCliente.Items.Clear();
+            if (pesquisa.Length > 0)
+            {
+                resCli = Cliente.ConverteObject(CRUD.SelecionarTabela("Cliente", Cliente.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
+
+                foreach (Cliente c in resCli)
+                {
+                    txtCliente.Items.Add(c.nome);
+                }
+            }
+            timerCliente.Enabled = false;
+        }
+
+        private void txtVendedor_TextChanged(object sender, EventArgs e)
+        {
+            if (timerVendedor.Enabled)
+            {
+                timerVendedor.Enabled = false;
+                timerVendedor.Enabled = true;
+            }
+            else
+            {
+                timerVendedor.Enabled = true;
+            }
+        }
+
+        private void txtVendedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (txtVendedor.Text != "")
+            {
+                regAtual.vendedor = resFuncio.Find(f => f.nome == txtVendedor.Text).cpf;
+            }
+            else
+            {
+                regAtual.vendedor = "";
+            }
+        }
+
+        private void timerVendedor_Tick(object sender, EventArgs e)
+        {
+            string pesquisa = txtVendedor.Text;
+            txtVendedor.Items.Clear();
+            if (pesquisa.Length > 0)
+            {
+                resFuncio = Funcionario.ConverteObject(CRUD.SelecionarTabela("Funcionario", Funcionario.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
+
+                foreach (Funcionario f in resFuncio)
+                {
+                    txtVendedor.Items.Add(f.nome);
+                }
+            }
+            timerVendedor.Enabled = false;
         }
     }
 }

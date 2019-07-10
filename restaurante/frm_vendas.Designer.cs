@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtData = new System.Windows.Forms.DateTimePicker();
             this.txtCliente = new System.Windows.Forms.ComboBox();
@@ -38,6 +39,9 @@
             this.txtVendedor = new System.Windows.Forms.ComboBox();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnSalva = new System.Windows.Forms.Button();
+            this.btnProcurarNF = new System.Windows.Forms.Button();
+            this.timerCliente = new System.Windows.Forms.Timer(this.components);
+            this.timerVendedor = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -54,19 +58,23 @@
             // 
             this.txtData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtData.Location = new System.Drawing.Point(380, 19);
+            this.txtData.Location = new System.Drawing.Point(486, 19);
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(130, 26);
             this.txtData.TabIndex = 1;
             // 
             // txtCliente
             // 
+            this.txtCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCliente.FormattingEnabled = true;
             this.txtCliente.Location = new System.Drawing.Point(106, 51);
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(404, 28);
+            this.txtCliente.Size = new System.Drawing.Size(510, 28);
             this.txtCliente.TabIndex = 2;
+            this.txtCliente.SelectedIndexChanged += new System.EventHandler(this.txtCliente_SelectedIndexChanged);
+            this.txtCliente.TextChanged += new System.EventHandler(this.txtCliente_TextChanged);
             // 
             // txtNota
             // 
@@ -81,7 +89,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(279, 22);
+            this.label2.Location = new System.Drawing.Point(385, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 20);
             this.label2.TabIndex = 4;
@@ -109,16 +117,20 @@
             // 
             // txtVendedor
             // 
+            this.txtVendedor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtVendedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.txtVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVendedor.FormattingEnabled = true;
             this.txtVendedor.Location = new System.Drawing.Point(106, 85);
             this.txtVendedor.Name = "txtVendedor";
-            this.txtVendedor.Size = new System.Drawing.Size(404, 28);
+            this.txtVendedor.Size = new System.Drawing.Size(510, 28);
             this.txtVendedor.TabIndex = 7;
+            this.txtVendedor.SelectedIndexChanged += new System.EventHandler(this.txtVendedor_SelectedIndexChanged);
+            this.txtVendedor.TextChanged += new System.EventHandler(this.txtVendedor_TextChanged);
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(553, 19);
+            this.btnNovo.Location = new System.Drawing.Point(676, 12);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 23);
             this.btnNovo.TabIndex = 8;
@@ -128,7 +140,7 @@
             // 
             // btnSalva
             // 
-            this.btnSalva.Location = new System.Drawing.Point(553, 51);
+            this.btnSalva.Location = new System.Drawing.Point(676, 44);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.Size = new System.Drawing.Size(75, 23);
             this.btnSalva.TabIndex = 9;
@@ -136,11 +148,32 @@
             this.btnSalva.UseVisualStyleBackColor = true;
             this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
             // 
+            // btnProcurarNF
+            // 
+            this.btnProcurarNF.Location = new System.Drawing.Point(256, 19);
+            this.btnProcurarNF.Name = "btnProcurarNF";
+            this.btnProcurarNF.Size = new System.Drawing.Size(75, 23);
+            this.btnProcurarNF.TabIndex = 10;
+            this.btnProcurarNF.Text = "Busca NF";
+            this.btnProcurarNF.UseVisualStyleBackColor = true;
+            this.btnProcurarNF.Click += new System.EventHandler(this.btnProcurarNF_Click);
+            // 
+            // timerCliente
+            // 
+            this.timerCliente.Interval = 700;
+            this.timerCliente.Tick += new System.EventHandler(this.timerCliente_Tick);
+            // 
+            // timerVendedor
+            // 
+            this.timerVendedor.Interval = 700;
+            this.timerVendedor.Tick += new System.EventHandler(this.timerVendedor_Tick);
+            // 
             // frm_vendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 134);
+            this.ClientSize = new System.Drawing.Size(787, 134);
+            this.Controls.Add(this.btnProcurarNF);
             this.Controls.Add(this.btnSalva);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.txtVendedor);
@@ -170,5 +203,8 @@
         private System.Windows.Forms.ComboBox txtVendedor;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnSalva;
+        private System.Windows.Forms.Button btnProcurarNF;
+        private System.Windows.Forms.Timer timerCliente;
+        private System.Windows.Forms.Timer timerVendedor;
     }
 }

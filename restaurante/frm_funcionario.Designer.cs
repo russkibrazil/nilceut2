@@ -46,7 +46,8 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnSalva = new System.Windows.Forms.Button();
             this.btnApagar = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboSetor = new System.Windows.Forms.ComboBox();
+            this.btnPesquisa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -191,7 +192,7 @@
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(609, 42);
+            this.btnNovo.Location = new System.Drawing.Point(609, 14);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 23);
             this.btnNovo.TabIndex = 24;
@@ -201,7 +202,7 @@
             // 
             // btnSalva
             // 
-            this.btnSalva.Location = new System.Drawing.Point(609, 71);
+            this.btnSalva.Location = new System.Drawing.Point(609, 43);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.Size = new System.Drawing.Size(75, 23);
             this.btnSalva.TabIndex = 25;
@@ -211,7 +212,7 @@
             // 
             // btnApagar
             // 
-            this.btnApagar.Location = new System.Drawing.Point(609, 103);
+            this.btnApagar.Location = new System.Drawing.Point(609, 75);
             this.btnApagar.Name = "btnApagar";
             this.btnApagar.Size = new System.Drawing.Size(75, 23);
             this.btnApagar.TabIndex = 26;
@@ -219,21 +220,34 @@
             this.btnApagar.UseVisualStyleBackColor = true;
             this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
             // 
-            // comboBox1
+            // comboSetor
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(96, 171);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(127, 26);
-            this.comboBox1.TabIndex = 27;
+            this.comboSetor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboSetor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboSetor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboSetor.FormattingEnabled = true;
+            this.comboSetor.Location = new System.Drawing.Point(96, 171);
+            this.comboSetor.Name = "comboSetor";
+            this.comboSetor.Size = new System.Drawing.Size(127, 26);
+            this.comboSetor.TabIndex = 27;
+            // 
+            // btnPesquisa
+            // 
+            this.btnPesquisa.Location = new System.Drawing.Point(229, 14);
+            this.btnPesquisa.Name = "btnPesquisa";
+            this.btnPesquisa.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisa.TabIndex = 29;
+            this.btnPesquisa.Text = "Pesquisar";
+            this.btnPesquisa.UseVisualStyleBackColor = true;
+            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
             // 
             // frmFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 228);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnPesquisa);
+            this.Controls.Add(this.comboSetor);
             this.Controls.Add(this.btnApagar);
             this.Controls.Add(this.btnSalva);
             this.Controls.Add(this.btnNovo);
@@ -279,7 +293,8 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnSalva;
         private System.Windows.Forms.Button btnApagar;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboSetor;
+        private System.Windows.Forms.Button btnPesquisa;
     }
 }
 

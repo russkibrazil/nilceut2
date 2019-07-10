@@ -15,6 +15,7 @@ namespace restaurante
     {
         bool novo = true;
         List<Refeicao> resRef = new List<Refeicao>();
+        List<Funcionario> resFuncio = new List<Funcionario>();
         Refeicao regAtual = new Refeicao();
         int pos = 0;
         public frm_refeicao()
@@ -60,6 +61,72 @@ namespace restaurante
         private void btnApaga_Click(object sender, EventArgs e)
         {
             CRUD.ApagaLinha("Refeicao", "idRefeicao=" + regAtual.id.ToString());
+        }
+
+        private void MostraDados()
+        {
+            txtId.Text = regAtual.id.ToString();
+            txtBase.Text = regAtual.rbase;
+            txtGuarnicao.Text = regAtual.rguarnicao;
+            //txtNutricionista
+            txtSalada.Text = regAtual.rsalada;
+            txtSobremesa.Text = regAtual.rsobremesa;
+            txtSuco.Text = regAtual.rsuco;
+        }
+
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            string psq = txtId.Text;
+            if (psq != "")
+            {
+                resRef = Refeicao.ConverteObject(CRUD.SelecionarTabela("Refeicao", Refeicao.Campos(), "Refeicao=" + psq));
+                if (resRef.Count() > 0)
+                {
+                    regAtual = resRef.First();
+                    MostraDados();
+                }
+            }
+        }
+
+        private void txtNutricionista_TextChanged(object sender, EventArgs e)
+        {
+            if (timerNutricionista.Enabled)
+            {
+                timerNutricionista.Enabled = false;
+                timerNutricionista.Enabled = true;
+            }
+            else
+            {
+                timerNutricionista.Enabled = true;
+            }
+        }
+
+        private void timerNutricionista_Tick(object sender, EventArgs e)
+        {
+            string pesquisa = txtNutricionista.Text;
+            txtNutricionista.Items.Clear();
+            if (pesquisa.Length > 0)
+            {
+                resFuncio = Funcionario.ConverteObject(CRUD.SelecionarTabela("Funcionario", Funcionario.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
+
+                foreach (Funcionario f in resFuncio)
+                {
+                    txtNutricionista.Items.Add(f.nome);
+                }
+            }
+            timerNutricionista.Enabled = false;
+        }
+
+        private void txtNutricionista_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (txtNutricionista.Text != "")
+            {
+                regAtual.nutricionista = resFuncio.Find(f => f.nome == txtNutricionista.Text).cpf;
+            }
+            else
+            {
+                regAtual.nutricionista = "";
+            }
         }
     }
 }

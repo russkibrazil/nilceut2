@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNutricionista = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,6 +46,8 @@
             this.btnSalva = new System.Windows.Forms.Button();
             this.btnApaga = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.MaskedTextBox();
+            this.btnPesquisa = new System.Windows.Forms.Button();
+            this.timerNutricionista = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -65,6 +68,8 @@
             this.txtNutricionista.Name = "txtNutricionista";
             this.txtNutricionista.Size = new System.Drawing.Size(331, 26);
             this.txtNutricionista.TabIndex = 2;
+            this.txtNutricionista.SelectedIndexChanged += new System.EventHandler(this.txtNutricionista_SelectedIndexChanged);
+            this.txtNutricionista.TextChanged += new System.EventHandler(this.txtNutricionista_TextChanged);
             // 
             // label2
             // 
@@ -205,11 +210,27 @@
             this.txtId.Size = new System.Drawing.Size(121, 24);
             this.txtId.TabIndex = 19;
             // 
+            // btnPesquisa
+            // 
+            this.btnPesquisa.Location = new System.Drawing.Point(242, 8);
+            this.btnPesquisa.Name = "btnPesquisa";
+            this.btnPesquisa.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisa.TabIndex = 20;
+            this.btnPesquisa.Text = "Pesquisar";
+            this.btnPesquisa.UseVisualStyleBackColor = true;
+            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
+            // 
+            // timerNutricionista
+            // 
+            this.timerNutricionista.Interval = 700;
+            this.timerNutricionista.Tick += new System.EventHandler(this.timerNutricionista_Tick);
+            // 
             // frm_refeicao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 241);
+            this.Controls.Add(this.btnPesquisa);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnApaga);
             this.Controls.Add(this.btnSalva);
@@ -253,5 +274,7 @@
         private System.Windows.Forms.Button btnSalva;
         private System.Windows.Forms.Button btnApaga;
         private System.Windows.Forms.MaskedTextBox txtId;
+        private System.Windows.Forms.Button btnPesquisa;
+        private System.Windows.Forms.Timer timerNutricionista;
     }
 }

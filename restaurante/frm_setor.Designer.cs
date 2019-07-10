@@ -28,13 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSetor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtSupervisor = new System.Windows.Forms.ComboBox();
+            this.comboSupervisor = new System.Windows.Forms.ComboBox();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnSalva = new System.Windows.Forms.Button();
             this.btnApagar = new System.Windows.Forms.Button();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnPrimeiro = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnProximo = new System.Windows.Forms.Button();
+            this.btnUltimo = new System.Windows.Forms.Button();
+            this.timerSupervisor = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -65,14 +72,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Supervisor";
             // 
-            // txtSupervisor
+            // comboSupervisor
             // 
-            this.txtSupervisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupervisor.FormattingEnabled = true;
-            this.txtSupervisor.Location = new System.Drawing.Point(115, 36);
-            this.txtSupervisor.Name = "txtSupervisor";
-            this.txtSupervisor.Size = new System.Drawing.Size(244, 28);
-            this.txtSupervisor.TabIndex = 4;
+            this.comboSupervisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboSupervisor.FormattingEnabled = true;
+            this.comboSupervisor.Location = new System.Drawing.Point(115, 36);
+            this.comboSupervisor.Name = "comboSupervisor";
+            this.comboSupervisor.Size = new System.Drawing.Size(244, 28);
+            this.comboSupervisor.TabIndex = 4;
+            this.comboSupervisor.SelectedIndexChanged += new System.EventHandler(this.comboSupervisor_SelectedIndexChanged);
+            this.comboSupervisor.TextChanged += new System.EventHandler(this.txtSupervisor_TextChanged);
             // 
             // btnNovo
             // 
@@ -104,15 +113,79 @@
             this.btnApagar.UseVisualStyleBackColor = true;
             this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
             // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(365, 4);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 8;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // btnPrimeiro
+            // 
+            this.btnPrimeiro.Enabled = false;
+            this.btnPrimeiro.Location = new System.Drawing.Point(587, 7);
+            this.btnPrimeiro.Name = "btnPrimeiro";
+            this.btnPrimeiro.Size = new System.Drawing.Size(75, 23);
+            this.btnPrimeiro.TabIndex = 9;
+            this.btnPrimeiro.Text = "|<";
+            this.btnPrimeiro.UseVisualStyleBackColor = true;
+            this.btnPrimeiro.Click += new System.EventHandler(this.btnPrimeiro_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Enabled = false;
+            this.btnAnterior.Location = new System.Drawing.Point(587, 35);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.TabIndex = 10;
+            this.btnAnterior.Text = "<";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnProximo
+            // 
+            this.btnProximo.Enabled = false;
+            this.btnProximo.Location = new System.Drawing.Point(587, 64);
+            this.btnProximo.Name = "btnProximo";
+            this.btnProximo.Size = new System.Drawing.Size(75, 23);
+            this.btnProximo.TabIndex = 11;
+            this.btnProximo.Text = ">";
+            this.btnProximo.UseVisualStyleBackColor = true;
+            this.btnProximo.Click += new System.EventHandler(this.btnProximo_Click);
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Enabled = false;
+            this.btnUltimo.Location = new System.Drawing.Point(587, 94);
+            this.btnUltimo.Name = "btnUltimo";
+            this.btnUltimo.Size = new System.Drawing.Size(75, 23);
+            this.btnUltimo.TabIndex = 12;
+            this.btnUltimo.Text = ">|";
+            this.btnUltimo.UseVisualStyleBackColor = true;
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            // 
+            // timerSupervisor
+            // 
+            this.timerSupervisor.Interval = 700;
+            this.timerSupervisor.Tick += new System.EventHandler(this.timerSupervisor_Tick);
+            // 
             // frm_setor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 99);
+            this.ClientSize = new System.Drawing.Size(674, 129);
+            this.Controls.Add(this.btnUltimo);
+            this.Controls.Add(this.btnProximo);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.btnPrimeiro);
+            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.btnApagar);
             this.Controls.Add(this.btnSalva);
             this.Controls.Add(this.btnNovo);
-            this.Controls.Add(this.txtSupervisor);
+            this.Controls.Add(this.comboSupervisor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSetor);
             this.Controls.Add(this.label1);
@@ -128,9 +201,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSetor;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox txtSupervisor;
+        private System.Windows.Forms.ComboBox comboSupervisor;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnSalva;
         private System.Windows.Forms.Button btnApagar;
+        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Button btnPrimeiro;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnProximo;
+        private System.Windows.Forms.Button btnUltimo;
+        private System.Windows.Forms.Timer timerSupervisor;
     }
 }

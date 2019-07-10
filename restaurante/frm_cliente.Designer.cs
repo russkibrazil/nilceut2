@@ -39,8 +39,7 @@
             this.btn_novo = new System.Windows.Forms.Button();
             this.btn_salva = new System.Windows.Forms.Button();
             this.btn_apagar = new System.Windows.Forms.Button();
-            this.dsCliente = new System.Data.DataSet();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCliente)).BeginInit();
+            this.btnPesquisa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -147,16 +146,22 @@
             this.btn_apagar.UseVisualStyleBackColor = true;
             this.btn_apagar.Click += new System.EventHandler(this.btn_apagar_Click);
             // 
-            // dsCliente
+            // btnPesquisa
             // 
-            this.dsCliente.CaseSensitive = true;
-            this.dsCliente.DataSetName = "dsCliente";
+            this.btnPesquisa.Location = new System.Drawing.Point(255, 19);
+            this.btnPesquisa.Name = "btnPesquisa";
+            this.btnPesquisa.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisa.TabIndex = 11;
+            this.btnPesquisa.Text = "Pesquisar";
+            this.btnPesquisa.UseVisualStyleBackColor = true;
+            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
             // 
             // frm_cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 169);
+            this.Controls.Add(this.btnPesquisa);
             this.Controls.Add(this.btn_apagar);
             this.Controls.Add(this.btn_salva);
             this.Controls.Add(this.btn_novo);
@@ -170,7 +175,6 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_cliente";
             this.Text = "Clientes";
-            ((System.ComponentModel.ISupportInitialize)(this.dsCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,6 +193,6 @@
         private System.Windows.Forms.Button btn_novo;
         private System.Windows.Forms.Button btn_salva;
         private System.Windows.Forms.Button btn_apagar;
-        private System.Data.DataSet dsCliente;
+        private System.Windows.Forms.Button btnPesquisa;
     }
 }
