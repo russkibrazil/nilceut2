@@ -69,13 +69,14 @@ namespace restaurante
         private void btnPesquisa_Click(object sender, EventArgs e)
         {
             string psq = RetornaCpf();
-            if (psq.Length == 14)
+            if (psq.Length == 11)
             {
                 resC = Cliente.ConverteObject(CRUD.SelecionarTabela("Cliente", Cliente.Campos(), "Cpf='" + psq + "'"));
                 if (resC.Count() > 0)
                 {
                     regAtual = resC.First();
                     MostraDados();
+                    novo = false;
                 }
             }
         }

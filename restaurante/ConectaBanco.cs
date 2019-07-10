@@ -9,17 +9,6 @@ using MySql.Data.MySqlClient;
 
 namespace restaurante
 {
-    /*class tabelasBd
-    {
-        public const string PALAVRA = "palavra";
-        public const string RUBRICA = "rubrica";
-        public const string REFERENCIAS = "referencias";
-        public const string USUARIOS = "usr";
-        public const string CONJUGACAOPT = "conjugacao_pt";
-        public const string CONJUGACAOEN = "conjugacao_en";
-        public const string EQUIVALENTE = "equivalencias";
-        public const string FRASEOLOGIA = "fraseologia";
-    }*/
     internal class ConectaBanco
     {
         protected string servidor;
@@ -44,8 +33,6 @@ namespace restaurante
             try
             {
                 conexao.Open();
-                if (conexao.ConnectionString.Contains("localhost"))
-                    InformaDiag.Erro("Banco de testes ativo.");
                 return true;
             }
             catch (MySqlException ex)
