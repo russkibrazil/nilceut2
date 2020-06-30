@@ -8,24 +8,24 @@ namespace restaurante.Tabelas
 {
     class Departamento
     {
-        public string departamento { get; private set; }
+        public string nome { get; private set; }
 
         public List<string> ListarValores()
         {
             return new List<string>
             {
-                departamento
+                nome
             };
         }
         public void DefinirSetor(string valor)
         {
-           departamento = valor;
+           nome = valor;
         }
         public static List<string> Campos()
         {
             return new List<string>
             {
-                "Departamento"
+                "Nome"
             };
         }
         public static List<Departamento> ConverteObject(List<object[]> listaObjs)

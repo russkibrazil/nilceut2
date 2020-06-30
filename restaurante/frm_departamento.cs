@@ -11,14 +11,13 @@ using restaurante.Tabelas;
 
 namespace restaurante
 {
-    public partial class frm_setor : Form
+    public partial class frm_departamento : Form
     {
         bool novo = true;
-        List<Servidor> resFuncio = new List<Servidor>();
         List<Departamento> resSetor = new List<Departamento>();
         Departamento regAtual = new Departamento();
         int pos = 0;
-        public frm_setor()
+        public frm_departamento()
         {
             InitializeComponent();
         }
@@ -26,22 +25,21 @@ namespace restaurante
         private void btnNovo_Click(object sender, EventArgs e)
         {
             txtSetor.Text =  "";
-            comboSupervisor.Text = "";
             regAtual.DefinirSetor("");
             novo = true;
         }
 
         private void btnSalva_Click(object sender, EventArgs e)
         {
-            if (novo && regAtual.setor == "")
+            if (novo && regAtual.nome == "")
             {
                 regAtual.DefinirSetor(txtSetor.Text);
-                if (CRUD.InsereLinha("Setor", Departamento.Campos(), regAtual.ListarValores()) > 0)
+                if (CRUD.InsereLinha("departamento", Departamento.Campos(), regAtual.ListarValores()) > 0)
                     InformaDiag.InformaSalvo();
             }
             else
             {
-                if (CRUD.UpdateLine("Setor", Departamento.Campos(), regAtual.ListarValores(), "Cpf='" + regAtual.setor + "'") > 0)
+                if (CRUD.UpdateLine("departamento", Departamento.Campos(), regAtual.ListarValores(), "Nome='" + regAtual.nome + "'") > 0)
                     InformaDiag.InformaSalvo();
                 resSetor.RemoveAt(pos);
                 resSetor.Insert(pos, regAtual);
@@ -51,15 +49,14 @@ namespace restaurante
 
         private void btnApagar_Click(object sender, EventArgs e)
         {
-            CRUD.ApagaLinha("Setor", "Setor='" + regAtual.setor + "'");
+            CRUD.ApagaLinha("departamento", "Nome='" + regAtual.nome + "'");
             resSetor.RemoveAt(pos);
             btnPrimeiro_Click(sender, e);
         }
 
         private void MostraDados()
         {
-            txtSetor.Text = regAtual.setor;
-            comboSupervisor.Text = regAtual.supervisor;
+            txtSetor.Text = regAtual.nome;
         }
 
         private void AtivaNavegador()
@@ -82,7 +79,7 @@ namespace restaurante
             string psq = txtSetor.Text;
             if (psq.Length > 2)
             {
-                resSetor = Departamento.ConverteObject(CRUD.SelecionarTabela("Setor", Departamento.Campos(), "Setor LIKE '" + psq + "'", "ASC"));
+                resSetor = Departamento.ConverteObject(CRUD.SelecionarTabela("departamento", Departamento.Campos(), "Nome LIKE '" + psq + "'", "ASC"));
                 if (resSetor.Count() > 0)
                 {
                     regAtual = resSetor.First();
@@ -132,47 +129,6 @@ namespace restaurante
                 regAtual = resSetor.Last();
                 pos = mx;
                 MostraDados();
-            }
-        }
-
-        private void txtSupervisor_TextChanged(object sender, EventArgs e)
-        {
-            if (timerSupervisor.Enabled)
-            {
-                timerSupervisor.Enabled = false;
-                timerSupervisor.Enabled = true;
-            }
-            else
-            {
-                timerSupervisor.Enabled = true;
-            }
-        }
-
-        private void timerSupervisor_Tick(object sender, EventArgs e)
-        {
-            string pesquisa = comboSupervisor.Text;
-            comboSupervisor.Items.Clear();
-            if (pesquisa.Length > 0)
-            {
-                resFuncio = Servidor.ConverteObject(CRUD.SelecionarTabela("Funcionario", Servidor.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
-
-                foreach (Servidor f in resFuncio)
-                {
-                    comboSupervisor.Items.Add(f.nome);
-                }
-            }
-            timerSupervisor.Enabled = false;
-        }
-
-        private void comboSupervisor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboSupervisor.Text != "")
-            {
-                regAtual.supervisor = resFuncio.Find(f => f.nome == comboSupervisor.Text).cpf;
-            }
-            else
-            {
-                regAtual.supervisor = "";
             }
         }
     }

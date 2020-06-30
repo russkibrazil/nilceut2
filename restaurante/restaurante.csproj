@@ -85,17 +85,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConectaBanco.cs" />
+    <Compile Include="frm_aluno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_aluno.Designer.cs">
+      <DependentUpon>frm_aluno.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_cardapio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_cardapio.Designer.cs">
       <DependentUpon>frm_cardapio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frm_cliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_cliente.Designer.cs">
-      <DependentUpon>frm_cliente.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_funcionario.cs">
       <SubType>Form</SubType>
@@ -115,17 +115,29 @@
     <Compile Include="frm_refeicao.Designer.cs">
       <DependentUpon>frm_refeicao.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_setor.cs">
+    <Compile Include="frm_departamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_setor.Designer.cs">
-      <DependentUpon>frm_setor.cs</DependentUpon>
+    <Compile Include="frm_departamento.Designer.cs">
+      <DependentUpon>frm_departamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_telefone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_telefone.Designer.cs">
+      <DependentUpon>frm_telefone.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_vendas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_vendas.Designer.cs">
       <DependentUpon>frm_vendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_endereco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_endereco.Designer.cs">
+      <DependentUpon>frm_endereco.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="HelperBd.cs" />
@@ -141,11 +153,11 @@
     <Compile Include="Tabelas\Departamento.cs" />
     <Compile Include="Tabelas\Compra.cs" />
     <Compile Include="Tabelas\Telefone.cs" />
+    <EmbeddedResource Include="frm_aluno.resx">
+      <DependentUpon>frm_aluno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_cardapio.resx">
       <DependentUpon>frm_cardapio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_cliente.resx">
-      <DependentUpon>frm_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_funcionario.resx">
       <DependentUpon>frm_funcionario.cs</DependentUpon>
@@ -156,8 +168,8 @@
     <EmbeddedResource Include="frm_refeicao.resx">
       <DependentUpon>frm_refeicao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_setor.resx">
-      <DependentUpon>frm_setor.cs</DependentUpon>
+    <EmbeddedResource Include="frm_departamento.resx">
+      <DependentUpon>frm_departamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_vendas.resx">
       <DependentUpon>frm_vendas.cs</DependentUpon>
@@ -197,6 +209,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="banco.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

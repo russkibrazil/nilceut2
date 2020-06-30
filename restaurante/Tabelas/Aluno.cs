@@ -15,10 +15,7 @@ namespace restaurante.Tabelas
         {
             return new List<string>
             {
-                cpf,
-                nome,
-                dnasc.ToString(),
-                tipoUsuario,
+                p.cpf,
                 ra.ToString()
             };
         }
@@ -26,7 +23,7 @@ namespace restaurante.Tabelas
         {
             return new List<string>
             {
-                "Cpf", "RA"
+                "CPF", "RA"
             };
         }
         public static List<Aluno> ConverteObject(List<object[]> listaObjs)
@@ -43,10 +40,8 @@ namespace restaurante.Tabelas
         {
             Aluno ev = new Aluno();
             int i = 0;
-            ev.Definir_Cpf(entrada[i++].ToString());
-            ev.nome = entrada[i++].ToString();
-            ev.endereco = entrada[i++].ToString();
-            ev.telefone = entrada[i++].ToString();
+            ev.p.Definir_Cpf(entrada[i++].ToString());
+            ev.ra = int.Parse(entrada[i++].ToString());
             return ev;
         }
     }

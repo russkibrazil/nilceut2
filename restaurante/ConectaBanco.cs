@@ -18,7 +18,7 @@ namespace restaurante
         protected string porta;
         protected MySqlConnection conexao;
 
-        public ConectaBanco(string bd = "nilceut2", string usr = "root", string pss = "gamesjoker", string svr = "localhost", string porta = "3306")
+        public ConectaBanco(string bd = "restaurante", string usr = "root", string pss = "gamesjoker", string svr = "localhost", string porta = "3306")
         {
             string connectionString = "Server=" + svr + ";" + "Port=" + porta + ";Database=" + bd + ";" + "User=" + usr + ";" + "pwd=" + pss + ";";
             conexao = new MySqlConnection(connectionString);

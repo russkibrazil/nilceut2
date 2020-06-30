@@ -11,14 +11,14 @@ using restaurante.Tabelas;
 
 namespace restaurante
 {
-    public partial class frmFuncionario : Form
+    public partial class frm_funcionario : Form
     {
         bool novo = true;
         List<Departamento> resS = new List<Departamento>();
         Departamento SetSelec = new Departamento();
         Servidor regAtual = new Servidor();
         int pos = 0;
-        public frmFuncionario()
+        public frm_funcionario()
         {
             InitializeComponent();
         }
@@ -26,24 +26,17 @@ namespace restaurante
         private void btnNovo_Click(object sender, EventArgs e)
         {
             txtCpf.Text = "";
-            txtCtps.Text = "";
-            txtEnd.Text = "";
             txtNome.Text = "";
-            txtSalario.Text = "";
-            txtTel.Text = "";
             novo = true;
-            regAtual.Definir_Cpf("");
+            regAtual.p.Definir_Cpf("");
         }
 
         private void btnSalva_Click(object sender, EventArgs e)
         {
-            regAtual.ctps = txtCtps.Text;
-            regAtual.endereco = txtEnd.Text;
-            regAtual.nome = txtNome.Text;
-            regAtual.salario = double.Parse(txtSalario.Text);
-            regAtual.telefone = txtTel.Text;
-            regAtual.admissao = txtAdmissao.Value;
-            if (novo && regAtual.cpf != "")
+            regAtual.p.nome = txtNome.Text;
+            regAtual.p.dnasc = dtNascto.Value;
+            regAtual.p.tipoUsuario = comboTipo.SelectedText;
+            if (novo && regAtual.p.cpf != "")
             {
                 string[] cs = txtCpf.Text.Split(".-".ToArray());
                 string c = "";
@@ -51,33 +44,37 @@ namespace restaurante
                 {
                     c += cs[i];
                 }
-                regAtual.Definir_Cpf(c);
-                if (CRUD.InsereLinha("Funcionario", Servidor.Campos(), regAtual.ListarValores()) > 0)
+                regAtual.p.Definir_Cpf(c);
+                if (CRUD.InsereLinha("pessoa", Pessoas_gen.Campos(), regAtual.p.ListarValores()) > 0)
+                {
+                    CRUD.InsereLinha("servidor", Servidor.Campos(), regAtual.ListarValores());
                     InformaDiag.InformaSalvo();
+                }
             }
             else
             {
-                if (CRUD.UpdateLine("Funcionario", Servidor.Campos(), regAtual.ListarValores(), "Cpf='" + regAtual.cpf + "'") > 0)
+                if (CRUD.UpdateLine("pessoa", Pessoas_gen.Campos(), regAtual.p.ListarValores(), "CPF=" + regAtual.p.cpf) > 0)
+                {
+                    CRUD.UpdateLine("servidor", Servidor.Campos(), regAtual.ListarValores(), "CPF=" + regAtual.p.cpf);
                     InformaDiag.InformaSalvo();
+                }
             }
             novo = false;
         }
 
         private void btnApagar_Click(object sender, EventArgs e)
         {
-            CRUD.ApagaLinha("Funcionario", "Cpf='" + regAtual.cpf + "'");
+            CRUD.ApagaLinha("servidor", "CPF=" + regAtual.p.cpf);
+            CRUD.ApagaLinha("telefone", "CPF=" + regAtual.p.cpf);
+            CRUD.ApagaLinha("endereco", "CPF=" + regAtual.p.cpf);
+            CRUD.ApagaLinha("pessoa", "CPF=" + regAtual.p.cpf);
         }
 
         private void btnLimpa_Click(object sender, EventArgs e)
         {
             txtCpf.Text = "";
-            txtCtps.Text = "";
-            txtEnd.Text = "";
             txtNome.Text = "";
-            txtSalario.Text = "";
             comboSetor.Text = "";
-            txtTel.Text = "";
-            txtAdmissao.Value = DateTime.Today;
         }
 
         private void btnPesquisa_Click(object sender, EventArgs e)
@@ -88,20 +85,70 @@ namespace restaurante
             {
                 c += cs[i];
             }
-            regAtual = Servidor.ConverteObject(CRUD.SelecionarTabela("Funcionario", Servidor.Campos(), "Cpf='" + c + "'")).First();
-            if (regAtual.nome == "")
+            regAtual = Servidor.ConverteObject(CRUD.SelecionarTabela("servidor", Servidor.Campos(), "CPF=" + c)).First();
+            if (regAtual.Departamento == "")
                 InformaDiag.Erro("Nenhum registro encontrado!");
             else
             {
-                txtCpf.Text = regAtual.cpf;
-                txtCtps.Text = regAtual.ctps;
-                txtEnd.Text = regAtual.endereco;
-                txtNome.Text = regAtual.nome;
-                txtSalario.Text = regAtual.salario.ToString();
-                txtTel.Text = regAtual.telefone;
-                comboSetor.Text = regAtual.setor;
-                txtAdmissao.Value = regAtual.admissao;
+                txtCpf.Text = regAtual.p.cpf;
+                txtNome.Text = regAtual.p.nome;
+                dtNascto.Value = regAtual.p.dnasc;
+                comboTipo.SelectedText = regAtual.p.tipoUsuario;
+                comboSetor.Text = regAtual.Departamento;
                 novo = false;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frm_telefone t = new frm_telefone();
+            t.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frm_endereco ender = new frm_endereco();
+            ender.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string pesquisa = comboSetor.Text;
+            comboSetor.Items.Clear();
+            if (pesquisa.Length > 0)
+            {
+                resS = Departamento.ConverteObject(CRUD.SelecionarTabela("departamento", Departamento.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
+
+                foreach (Departamento f in resS)
+                {
+                    comboSetor.Items.Add(f.nome);
+                }
+            }
+            timer1.Enabled = false;
+        }
+
+        private void comboSetor_TextChanged(object sender, EventArgs e)
+        {
+            if (timer1.Enabled)
+            {
+                timer1.Enabled = false;
+                timer1.Enabled = true;
+            }
+            else
+            {
+                timer1.Enabled = true;
+            }
+        }
+
+        private void comboSetor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboSetor.Text != "")
+            {
+                regAtual.Departamento = resS.Find(f => f.nome == comboSetor.Text).nome;
+            }
+            else
+            {
+                regAtual.Departamento = "";
             }
         }
     }

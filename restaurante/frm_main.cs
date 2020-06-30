@@ -25,13 +25,13 @@ namespace restaurante
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_cliente cli = new frm_cliente();
+            frm_clientes cli = new frm_clientes();
             cli.ShowDialog();
         }
 
         private void setorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_setor setor = new frm_setor();
+            frm_departamento setor = new frm_departamento();
             setor.ShowDialog();
         }
 
