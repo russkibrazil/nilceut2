@@ -10,8 +10,8 @@ namespace restaurante.Tabelas
     {
         public string cpf  { get; private set; }
         public string nome { get; set; }
-        public string endereco { get; set; }
-        public string telefone { get; set; }
+        public DateTime dnasc { get; set; }
+        public string tipoUsuario { get; set; }
 
         public void Definir_Cpf(string valor)
         {

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace restaurante.Tabelas
 {
-    class Funcionario : Pessoas_gen
+    class Servidor
     {
-        public string ctps { get; set; }
-        public string setor { get; set; }
-        public DateTime admissao { get; set; }
-        public double salario { get; set; }
+        public Pessoas_gen p { get; set; }
+        public string Departamento { get; set; }
 
         public List<string> ListarValores()
         {
@@ -33,19 +31,19 @@ namespace restaurante.Tabelas
                 "Endereco", "CTPS", "DataAdmissao", "Salario", "Telefone"
             };
         }
-        public static List<Funcionario> ConverteObject(List<object[]> listaObjs)
+        public static List<Servidor> ConverteObject(List<object[]> listaObjs)
         {
-            List<Funcionario> s = new List<Funcionario>();
+            List<Servidor> s = new List<Servidor>();
             foreach (object[] data in listaObjs)
             {
-                s.Add((Funcionario)data);
+                s.Add((Servidor)data);
             }
             return s;
         }
 
-        public static explicit operator Funcionario(object[] entrada)
+        public static explicit operator Servidor(object[] entrada)
         {
-            Funcionario ev = new Funcionario();
+            Servidor ev = new Servidor();
             int i = 0;
             ev.Definir_Cpf(entrada[i++].ToString());
             ev.nome = entrada[i++].ToString();

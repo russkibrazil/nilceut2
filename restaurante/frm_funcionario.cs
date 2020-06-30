@@ -14,9 +14,9 @@ namespace restaurante
     public partial class frmFuncionario : Form
     {
         bool novo = true;
-        List<Setor> resS = new List<Setor>();
-        Setor SetSelec = new Setor();
-        Funcionario regAtual = new Funcionario();
+        List<Departamento> resS = new List<Departamento>();
+        Departamento SetSelec = new Departamento();
+        Servidor regAtual = new Servidor();
         int pos = 0;
         public frmFuncionario()
         {
@@ -52,12 +52,12 @@ namespace restaurante
                     c += cs[i];
                 }
                 regAtual.Definir_Cpf(c);
-                if (CRUD.InsereLinha("Funcionario", Funcionario.Campos(), regAtual.ListarValores()) > 0)
+                if (CRUD.InsereLinha("Funcionario", Servidor.Campos(), regAtual.ListarValores()) > 0)
                     InformaDiag.InformaSalvo();
             }
             else
             {
-                if (CRUD.UpdateLine("Funcionario", Funcionario.Campos(), regAtual.ListarValores(), "Cpf='" + regAtual.cpf + "'") > 0)
+                if (CRUD.UpdateLine("Funcionario", Servidor.Campos(), regAtual.ListarValores(), "Cpf='" + regAtual.cpf + "'") > 0)
                     InformaDiag.InformaSalvo();
             }
             novo = false;
@@ -88,7 +88,7 @@ namespace restaurante
             {
                 c += cs[i];
             }
-            regAtual = Funcionario.ConverteObject(CRUD.SelecionarTabela("Funcionario", Funcionario.Campos(), "Cpf='" + c + "'")).First();
+            regAtual = Servidor.ConverteObject(CRUD.SelecionarTabela("Funcionario", Servidor.Campos(), "Cpf='" + c + "'")).First();
             if (regAtual.nome == "")
                 InformaDiag.Erro("Nenhum registro encontrado!");
             else

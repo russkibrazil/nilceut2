@@ -15,7 +15,7 @@ namespace restaurante
     {
         bool novo = true;
         List<Refeicao> resRef = new List<Refeicao>();
-        List<Funcionario> resFuncio = new List<Funcionario>();
+        List<Servidor> resFuncio = new List<Servidor>();
         Refeicao regAtual = new Refeicao();
         int pos = 0;
         public frm_refeicao()
@@ -107,9 +107,9 @@ namespace restaurante
             txtNutricionista.Items.Clear();
             if (pesquisa.Length > 0)
             {
-                resFuncio = Funcionario.ConverteObject(CRUD.SelecionarTabela("Funcionario", Funcionario.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
+                resFuncio = Servidor.ConverteObject(CRUD.SelecionarTabela("Funcionario", Servidor.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
 
-                foreach (Funcionario f in resFuncio)
+                foreach (Servidor f in resFuncio)
                 {
                     txtNutricionista.Items.Add(f.nome);
                 }

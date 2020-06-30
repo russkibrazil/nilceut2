@@ -6,46 +6,42 @@ using System.Threading.Tasks;
 
 namespace restaurante.Tabelas
 {
-    class Setor
+    class Departamento
     {
-        public string setor { get; private set; }
-        public string supervisor { get; set; }
+        public string departamento { get; private set; }
 
         public List<string> ListarValores()
         {
             return new List<string>
             {
-                setor,
-                supervisor
+                departamento
             };
         }
         public void DefinirSetor(string valor)
         {
-           setor = valor;
+           departamento = valor;
         }
         public static List<string> Campos()
         {
             return new List<string>
             {
-                "Setor", "Supervisor_Cpf"
+                "Departamento"
             };
         }
-        public static List<Setor> ConverteObject(List<object[]> listaObjs)
+        public static List<Departamento> ConverteObject(List<object[]> listaObjs)
         {
-            List<Setor> s = new List<Setor>();
+            List<Departamento> s = new List<Departamento>();
             foreach (object[] data in listaObjs)
             {
-                s.Add((Setor)data);
+                s.Add((Departamento)data);
             }
             return s;
         }
 
-        public static explicit operator Setor(object[] entrada)
+        public static explicit operator Departamento(object[] entrada)
         {
-            Setor ev = new Setor();
-            int i = 0;
-            ev.setor = entrada[i++].ToString();
-            ev.supervisor= entrada[i++].ToString();
+            Departamento ev = new Departamento();
+            ev.DefinirSetor(entrada[0].ToString());
             return ev;
         }
     }

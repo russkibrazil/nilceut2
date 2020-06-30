@@ -8,32 +8,33 @@ namespace restaurante.Tabelas
 {
     class Cardapio
     {
-        public DateTime dtCompra { get; private set; }
+        public DateTime dtPreparo { get; private set; }
         public int refeicao { get; set; }
-        public int quantidade { get; set; }
+        public int qtPreparada { get; set; }
+        public int qtDisponivel { get; set;  }
 
         public List<string> ListarValores()
         {
             return new List<string>
             {
-                dtCompra.ToShortDateString(),
+                dtPreparo.ToShortDateString(),
                 refeicao.ToString(),
-                quantidade.ToString()
+                qtPreparada.ToString()
             };
         }
         public void Definir_data(string data)
         {
-            this.dtCompra = DateTime.Parse(data);
+            this.dtPreparo = DateTime.Parse(data);
         }
         public void Definir_data(DateTime data)
         {
-            this.dtCompra = data;
+            this.dtPreparo = data;
         }
         public static List<string> Campos()
         {
             return new List<string>
             {
-                "Data", "Refeicao", "Quantidade"
+                "DtPreparo", "QtPreparada", "QtDisponivel","IdRefeicao"
             };
         }
 
@@ -52,8 +53,9 @@ namespace restaurante.Tabelas
             Cardapio ev = new Cardapio();
             int i = 0;
             ev.Definir_data(entrada[i++].ToString());
+            ev.qtPreparada = int.Parse(entrada[i++].ToString());
+            ev.qtDisponivel = int.Parse(entrada[i++].ToString());
             ev.refeicao = int.Parse(entrada[i++].ToString());
-            ev.quantidade = int.Parse(entrada[i++].ToString());
             return ev;
         }
     }

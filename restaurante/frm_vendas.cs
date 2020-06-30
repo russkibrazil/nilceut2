@@ -14,10 +14,10 @@ namespace restaurante
     public partial class frm_vendas : Form
     {
         bool novo = true;
-        List<Vendas> resVendas = new List<Vendas>();
+        List<Compra> resVendas = new List<Compra>();
         List<Cliente> resCli = new List<Cliente>();
-        List<Funcionario> resFuncio = new List<Funcionario>();
-        Vendas regAtual = new Vendas();
+        List<Servidor> resFuncio = new List<Servidor>();
+        Compra regAtual = new Compra();
         int pos = 0;
 
         public frm_vendas()
@@ -39,12 +39,12 @@ namespace restaurante
             if (novo && regAtual.nf <= 0)
             {
                 regAtual.Definir_nf(txtNota.Text);
-                if (CRUD.InsereLinha("Vendas", Vendas.Campos(), regAtual.ListarValores()) > 0)
+                if (CRUD.InsereLinha("Vendas", Compra.Campos(), regAtual.ListarValores()) > 0)
                     InformaDiag.InformaSalvo();
             }
             else
             {
-                if (CRUD.UpdateLine("Vendas", Vendas.Campos(), regAtual.ListarValores(), "NotaFiscal=" + regAtual.nf.ToString()) > 0)
+                if (CRUD.UpdateLine("Vendas", Compra.Campos(), regAtual.ListarValores(), "NotaFiscal=" + regAtual.nf.ToString()) > 0)
                     InformaDiag.InformaSalvo();
             }
             novo = false;
@@ -63,7 +63,7 @@ namespace restaurante
             string psq = txtNota.Text;
             if (psq.Length > 2)
             {
-                resVendas = Vendas.ConverteObject(CRUD.SelecionarTabela("Vendas", Vendas.Campos(), "NotaFiscal=" + psq));
+                resVendas = Compra.ConverteObject(CRUD.SelecionarTabela("Vendas", Compra.Campos(), "NotaFiscal=" + psq));
                 if (resVendas.Count() > 0)
                 {
                     regAtual = resVendas.First();
@@ -145,9 +145,9 @@ namespace restaurante
             txtVendedor.Items.Clear();
             if (pesquisa.Length > 0)
             {
-                resFuncio = Funcionario.ConverteObject(CRUD.SelecionarTabela("Funcionario", Funcionario.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
+                resFuncio = Servidor.ConverteObject(CRUD.SelecionarTabela("Funcionario", Servidor.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
 
-                foreach (Funcionario f in resFuncio)
+                foreach (Servidor f in resFuncio)
                 {
                     txtVendedor.Items.Add(f.nome);
                 }

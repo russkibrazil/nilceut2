@@ -14,7 +14,6 @@ namespace restaurante.Tabelas
         public string rsalada { get; set; }
         public string rsobremesa { get; set; }
         public string rsuco { get; set; }
-        public string nutricionista { get; set; }
 
         public List<string> ListarValores()
         {
@@ -25,8 +24,7 @@ namespace restaurante.Tabelas
                 rguarnicao,
                 rsalada,
                 rsobremesa,
-                rsuco,
-                nutricionista
+                rsuco
             };
         }
         public void Definir_id(string id)
@@ -38,7 +36,7 @@ namespace restaurante.Tabelas
         {
             return new List<string>
             {
-                "idRefeicao", "Base", "Guarnicao", "Salada", "Sobremesa", "Suco", "Nutricionista_Resp"
+                "Id", "Base", "Guarnicao", "Salada", "Sobremesa", "Suco"
             };
         }
 
@@ -62,7 +60,6 @@ namespace restaurante.Tabelas
             ev.rsalada = entrada[i++].ToString();
             ev.rsobremesa = entrada[i++].ToString();
             ev.rsuco = entrada[i++].ToString();
-            ev.nutricionista = entrada[i++].ToString();
             return ev;
         }
     }

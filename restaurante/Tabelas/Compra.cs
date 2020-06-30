@@ -6,21 +6,17 @@ using System.Threading.Tasks;
 
 namespace restaurante.Tabelas
 {
-    class Vendas
+    class Compra
     {
-        public int nf { get; private set; }
-        public string cliente { get; set; }
-        public DateTime dtCompra { get; set; }
-        public string vendedor { get; set; }
+        public int dt { get; private set; }
+        public string cpf { get; set; }
 
         public List<string> ListarValores()
         {
             return new List<string>
             {
-                nf.ToString(),
-                cliente,
-                dtCompra.ToShortDateString(),
-                vendedor
+                dt.ToString(),
+                cpf
             };
         }
         public void Definir_nf(string nota)
@@ -36,19 +32,19 @@ namespace restaurante.Tabelas
             };
         }
 
-        public static List<Vendas> ConverteObject(List<object[]> listaObjs)
+        public static List<Compra> ConverteObject(List<object[]> listaObjs)
         {
-            List<Vendas> s = new List<Vendas>();
+            List<Compra> s = new List<Compra>();
             foreach (object[] data in listaObjs)
             {
-                s.Add((Vendas)data);
+                s.Add((Compra)data);
             }
             return s;
         }
 
-        public static explicit operator Vendas(object[] entrada)
+        public static explicit operator Compra(object[] entrada)
         {
-            Vendas ev = new Vendas();
+            Compra ev = new Compra();
             int i = 0;
             ev.Definir_nf(entrada[i++].ToString());
             ev.cliente = entrada[i++].ToString();

@@ -14,9 +14,9 @@ namespace restaurante
     public partial class frm_setor : Form
     {
         bool novo = true;
-        List<Funcionario> resFuncio = new List<Funcionario>();
-        List<Setor> resSetor = new List<Setor>();
-        Setor regAtual = new Setor();
+        List<Servidor> resFuncio = new List<Servidor>();
+        List<Departamento> resSetor = new List<Departamento>();
+        Departamento regAtual = new Departamento();
         int pos = 0;
         public frm_setor()
         {
@@ -36,12 +36,12 @@ namespace restaurante
             if (novo && regAtual.setor == "")
             {
                 regAtual.DefinirSetor(txtSetor.Text);
-                if (CRUD.InsereLinha("Setor", Setor.Campos(), regAtual.ListarValores()) > 0)
+                if (CRUD.InsereLinha("Setor", Departamento.Campos(), regAtual.ListarValores()) > 0)
                     InformaDiag.InformaSalvo();
             }
             else
             {
-                if (CRUD.UpdateLine("Setor", Setor.Campos(), regAtual.ListarValores(), "Cpf='" + regAtual.setor + "'") > 0)
+                if (CRUD.UpdateLine("Setor", Departamento.Campos(), regAtual.ListarValores(), "Cpf='" + regAtual.setor + "'") > 0)
                     InformaDiag.InformaSalvo();
                 resSetor.RemoveAt(pos);
                 resSetor.Insert(pos, regAtual);
@@ -82,7 +82,7 @@ namespace restaurante
             string psq = txtSetor.Text;
             if (psq.Length > 2)
             {
-                resSetor = Setor.ConverteObject(CRUD.SelecionarTabela("Setor", Setor.Campos(), "Setor LIKE '" + psq + "'", "ASC"));
+                resSetor = Departamento.ConverteObject(CRUD.SelecionarTabela("Setor", Departamento.Campos(), "Setor LIKE '" + psq + "'", "ASC"));
                 if (resSetor.Count() > 0)
                 {
                     regAtual = resSetor.First();
@@ -154,9 +154,9 @@ namespace restaurante
             comboSupervisor.Items.Clear();
             if (pesquisa.Length > 0)
             {
-                resFuncio = Funcionario.ConverteObject(CRUD.SelecionarTabela("Funcionario", Funcionario.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
+                resFuncio = Servidor.ConverteObject(CRUD.SelecionarTabela("Funcionario", Servidor.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
 
-                foreach (Funcionario f in resFuncio)
+                foreach (Servidor f in resFuncio)
                 {
                     comboSupervisor.Items.Add(f.nome);
                 }

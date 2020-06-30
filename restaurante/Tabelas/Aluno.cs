@@ -6,38 +6,42 @@ using System.Threading.Tasks;
 
 namespace restaurante.Tabelas
 {
-    class Cliente : Pessoas_gen
+    class Aluno
     {
+        public Pessoas_gen p { get; set; }
+        public int ra { get; set; }
+
         public List<string> ListarValores()
         {
             return new List<string>
             {
                 cpf,
                 nome,
-                endereco,
-                telefone
+                dnasc.ToString(),
+                tipoUsuario,
+                ra.ToString()
             };
         }
         public static List<string> Campos()
         {
             return new List<string>
             {
-                "Cpf", "Nome", "Endereco", "Telefone"
+                "Cpf", "RA"
             };
         }
-        public static List<Cliente> ConverteObject(List<object[]> listaObjs)
+        public static List<Aluno> ConverteObject(List<object[]> listaObjs)
         {
-            List<Cliente> s = new List<Cliente>();
+            List<Aluno> s = new List<Aluno>();
             foreach (object[] data in listaObjs)
             {
-                s.Add((Cliente)data);
+                s.Add((Aluno)data);
             }
             return s;
         }
 
-        public static explicit operator Cliente(object[] entrada)
+        public static explicit operator Aluno(object[] entrada)
         {
-            Cliente ev = new Cliente();
+            Aluno ev = new Aluno();
             int i = 0;
             ev.Definir_Cpf(entrada[i++].ToString());
             ev.nome = entrada[i++].ToString();
