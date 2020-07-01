@@ -8,27 +8,28 @@ namespace restaurante.Tabelas
 {
     class Compra
     {
-        public int dt { get; private set; }
-        public string cpf { get; set; }
+        public DateTime dt { get; private set; }
+        public Pessoas_gen p { get; set; }
 
         public List<string> ListarValores()
         {
             return new List<string>
             {
                 dt.ToString(),
-                cpf
+                p.cpf
             };
         }
-        public void Definir_nf(string nota)
+
+        public void DefinirData(DateTime t)
         {
-            nf = int.Parse(nota);
+            dt = t;
         }
 
         public static List<string> Campos()
         {
             return new List<string>
             {
-                "NotaFiscal", "ClienteCpf", "DataCompra", "VendedorCpf"
+                "Dt", "CPF"
             };
         }
 
@@ -46,10 +47,8 @@ namespace restaurante.Tabelas
         {
             Compra ev = new Compra();
             int i = 0;
-            ev.Definir_nf(entrada[i++].ToString());
-            ev.cliente = entrada[i++].ToString();
-            ev.dtCompra = DateTime.Parse(entrada[i++].ToString());
-            ev.vendedor = (entrada[i++].ToString());
+            ev.dt = DateTime.Parse(entrada[i++].ToString());
+            ev.p.Definir_Cpf(entrada[i++].ToString());
             return ev;
         }
     }

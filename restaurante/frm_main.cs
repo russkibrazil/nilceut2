@@ -19,13 +19,13 @@ namespace restaurante
 
         private void funcionarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmFuncionario func = new frmFuncionario();
+            frm_funcionario func = new frm_funcionario();
             func.ShowDialog();
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_clientes cli = new frm_clientes();
+            frm_aluno cli = new frm_aluno();
             cli.ShowDialog();
         }
 
@@ -39,12 +39,6 @@ namespace restaurante
         {
             frm_refeicao refeicao = new frm_refeicao();
             refeicao.ShowDialog();
-        }
-
-        private void estoqueToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm_estoque estoque = new frm_estoque();
-            estoque.ShowDialog();
         }
 
         private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)

@@ -56,12 +56,13 @@ CREATE TABLE endereco (
 
 
 CREATE TABLE refeicao (Id INTEGER AUTO_INCREMENT, 
+    Base VARCHAR(50) NOT NULL,
 	Guarnicao VARCHAR(50) NOT NULL, 
     Salada VARCHAR(50) NOT NULL, 
     Sobremesa VARCHAR(50) NOT NULL, 
     Suco VARCHAR(50) NOT NULL,
      PRIMARY KEY (Id),
-     UNIQUE KEY `refeicao_UNIQUE` (Guarnicao, Salada, Sobremesa, Suco)
+     UNIQUE KEY `refeicao_UNIQUE` (Base, Guarnicao, Salada, Sobremesa, Suco)
 );
 
 
@@ -89,6 +90,11 @@ BEGIN
 	UPDATE cardapio SET QtDisponivel = (QtDisponivel - 1) WHERE DtPreparo = quando;
 END$$
 DELIMITER ;
+
+CREATE TRIGGER `cardapio`.`gerar_refeicao_disponivel` AFTER INSERT ON `restaurante`.`cardapio` FOR EACH ROW
+BEGIN
+    UPDATE cardapio SET QtDisponivel = new.QtPreparada WHERE DtPreparo = new.DtPreparo;
+END
 
 CREATE TRIGGER `compra`.`incremento_compra_trigger` AFTER INSERT ON `restaurante`.`compra` FOR EACH ROW
 	CALL Dec_compra(Dt);

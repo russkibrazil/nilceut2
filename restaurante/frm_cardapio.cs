@@ -27,13 +27,13 @@ namespace restaurante
             txtQtd.Value = 1;
             txtRefeicao.Text = "";
             regAtual.Definir_data(DateTime.Today.ToShortDateString());
-            regAtual.quantidade = 1;
+            regAtual.qtPreparada = 1;
             regAtual.refeicao = 0;
         }
         private void MostraDados()
         {
-            txtData.Value = regAtual.dtCompra;
-            txtQtd.Value = regAtual.quantidade;
+            txtData.Value = regAtual.dtPreparo;
+            txtQtd.Value = regAtual.qtPreparada;
             txtRefeicao.Text = regAtual.refeicao.ToString();
         }
 
@@ -46,7 +46,7 @@ namespace restaurante
         private void btnProcurar_Click(object sender, EventArgs e)
         {
             string psq = txtData.Text;
-            resCardapio = Cardapio.ConverteObject(CRUD.SelecionarTabela("Cardapio", Cardapio.Campos(), "Data='" + psq + "'", "ASC"));
+            resCardapio = Cardapio.ConverteObject(CRUD.SelecionarTabela("cardapio", Cardapio.Campos(), "Data='" + psq + "'", "ASC"));
             if (resCardapio.Count() > 0)
             {
                 regAtual = resCardapio.First();
@@ -61,17 +61,17 @@ namespace restaurante
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            regAtual.quantidade = int.Parse(txtQtd.Value.ToString());
+            regAtual.qtPreparada = int.Parse(txtQtd.Value.ToString());
             regAtual.refeicao = int.Parse(txtRefeicao.Text);
             if (novo)
             {
                 regAtual.Definir_data(txtData.Text);
-                if (CRUD.InsereLinha("Cardapio", Cardapio.Campos(), regAtual.ListarValores()) > 0)
+                if (CRUD.InsereLinha("cardapio", Cardapio.Campos(), regAtual.ListarValores()) > 0)
                     InformaDiag.InformaSalvo();
             }
             else
             {
-                if (CRUD.UpdateLine("Cardapio", Cardapio.Campos(), regAtual.ListarValores(), "Data='" + regAtual.dtCompra + "'") > 0)
+                if (CRUD.UpdateLine("cardapio", Cardapio.Campos(), regAtual.ListarValores(), "Data='" + regAtual.dtPreparo + "'") > 0)
                     InformaDiag.InformaSalvo();
             }
             novo = false;
@@ -84,11 +84,15 @@ namespace restaurante
             Refeicao cRef = new Refeicao();
             if (psq.Length > 0)
             {
-                resRef = Refeicao.ConverteObject(CRUD.SelecionarTabela("Refeicao", Refeicao.Campos(), "idRefeicao=" + psq));
+                resRef = Refeicao.ConverteObject(CRUD.SelecionarTabela("refeicao", Refeicao.Campos(), "Id=" + psq));
                 if (resRef.Count() > 0)
                 {
                     cRef = resRef.First();
                     labelRefeicao.Text = cRef.rbase + "\n" + cRef.rguarnicao + "\n" + cRef.rsalada + "\n" + cRef.rsobremesa + "\n" + cRef.rsuco;
+                }
+                else
+                {
+                    labelRefeicao.Text = "Resultado não encontrado!";
                 }
             }
         }

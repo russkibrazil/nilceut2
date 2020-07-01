@@ -159,6 +159,9 @@
     <EmbeddedResource Include="frm_cardapio.resx">
       <DependentUpon>frm_cardapio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_endereco.resx">
+      <DependentUpon>frm_endereco.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_funcionario.resx">
       <DependentUpon>frm_funcionario.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_departamento.resx">
       <DependentUpon>frm_departamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_telefone.resx">
+      <DependentUpon>frm_telefone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_vendas.resx">
       <DependentUpon>frm_vendas.cs</DependentUpon>

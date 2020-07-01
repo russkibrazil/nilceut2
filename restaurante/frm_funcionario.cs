@@ -17,7 +17,7 @@ namespace restaurante
         List<Departamento> resS = new List<Departamento>();
         Departamento SetSelec = new Departamento();
         Servidor regAtual = new Servidor();
-        int pos = 0;
+
         public frm_funcionario()
         {
             InitializeComponent();
@@ -101,13 +101,13 @@ namespace restaurante
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frm_telefone t = new frm_telefone();
+            frm_telefone t = new frm_telefone(regAtual.p.nome, regAtual.p.cpf);
             t.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frm_endereco ender = new frm_endereco();
+            frm_endereco ender = new frm_endereco(regAtual.p.nome, regAtual.p.cpf);
             ender.ShowDialog();
         }
 

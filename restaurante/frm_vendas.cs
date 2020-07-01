@@ -15,8 +15,7 @@ namespace restaurante
     {
         bool novo = true;
         List<Compra> resVendas = new List<Compra>();
-        List<Cliente> resCli = new List<Cliente>();
-        List<Servidor> resFuncio = new List<Servidor>();
+        List<Pessoas_gen> resCli = new List<Pessoas_gen>();
         Compra regAtual = new Compra();
         int pos = 0;
 
@@ -28,23 +27,20 @@ namespace restaurante
         private void btnNovo_Click(object sender, EventArgs e)
         {
             txtCliente.Text = "";
-            txtNota.Text = "";
-            txtVendedor.Text = "";
             novo = true;
         }
 
         private void btnSalva_Click(object sender, EventArgs e)
         {
-            regAtual.dtCompra = DateTime.Parse(txtData.Text);
-            if (novo && regAtual.nf <= 0)
+            if (novo)
             {
-                regAtual.Definir_nf(txtNota.Text);
-                if (CRUD.InsereLinha("Vendas", Compra.Campos(), regAtual.ListarValores()) > 0)
+                regAtual.DefinirData(DateTime.Parse(txtData.Text));
+                if (CRUD.InsereLinha("compra", Compra.Campos(), regAtual.ListarValores()) > 0)
                     InformaDiag.InformaSalvo();
             }
             else
             {
-                if (CRUD.UpdateLine("Vendas", Compra.Campos(), regAtual.ListarValores(), "NotaFiscal=" + regAtual.nf.ToString()) > 0)
+                if (CRUD.UpdateLine("compra", Compra.Campos(), regAtual.ListarValores(), "Dt=" + regAtual.dt.ToString() + " AND CPF=" + regAtual.p.cpf) > 0)
                     InformaDiag.InformaSalvo();
             }
             novo = false;
@@ -52,21 +48,20 @@ namespace restaurante
 
         private void MostraDados()
         {
-            txtNota.Text = regAtual.nf.ToString();
-            txtData.Value = regAtual.dtCompra;
-            //txtCliente
-            //txtVendedor
+            txtData.Value = regAtual.dt;
+            txtCliente.Text = regAtual.p.nome;
         }
 
         private void btnProcurarNF_Click(object sender, EventArgs e)
         {
-            string psq = txtNota.Text;
+            string psq = txtData.Text;
             if (psq.Length > 2)
             {
-                resVendas = Compra.ConverteObject(CRUD.SelecionarTabela("Vendas", Compra.Campos(), "NotaFiscal=" + psq));
+                resVendas = Compra.ConverteObject(CRUD.SelecionarTabela("compra", Compra.Campos(), "Dt=" + psq));
                 if (resVendas.Count() > 0)
                 {
                     regAtual = resVendas.First();
+                    regAtual.p = Pessoas_gen.ConverteObject(CRUD.SelecionarTabela("pessoa", Pessoas_gen.Campos(), "CPF=" + regAtual.p.cpf)).First();
                     pos = 0;
                     MostraDados();
                 }
@@ -90,11 +85,11 @@ namespace restaurante
         {
             if (txtCliente.Text != "")
             {
-                regAtual.cliente = resCli.Find(f => f.nome == txtCliente.Text).cpf;
+                regAtual.p = resCli.Find(f => f.nome == txtCliente.Text);
             }
             else
             {
-                regAtual.cliente = "";
+                regAtual.p = null;
             }
         }
 
@@ -104,55 +99,67 @@ namespace restaurante
             txtCliente.Items.Clear();
             if (pesquisa.Length > 0)
             {
-                resCli = Cliente.ConverteObject(CRUD.SelecionarTabela("Cliente", Cliente.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
+                resCli = Pessoas_gen.ConverteObject(CRUD.SelecionarTabela("pessoa", Pessoas_gen.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
 
-                foreach (Cliente c in resCli)
+                foreach (Pessoas_gen c in resCli)
                 {
                     txtCliente.Items.Add(c.nome);
                 }
             }
             timerCliente.Enabled = false;
         }
-
-        private void txtVendedor_TextChanged(object sender, EventArgs e)
+        private void AtivaNavegador()
         {
-            if (timerVendedor.Enabled)
+            btnAnterior.Enabled = true;
+            btnPrimeiro.Enabled = true;
+            btnProximo.Enabled = true;
+            btnUltimo.Enabled = true;
+        }
+        private void DesativaNavegador()
+        {
+            btnAnterior.Enabled = false;
+            btnPrimeiro.Enabled = false;
+            btnProximo.Enabled = false;
+            btnUltimo.Enabled = false;
+        }
+
+        private void btnPrimeiro_Click(object sender, EventArgs e)
+        {
+            if (pos > 0)
             {
-                timerVendedor.Enabled = false;
-                timerVendedor.Enabled = true;
-            }
-            else
-            {
-                timerVendedor.Enabled = true;
+                regAtual = resVendas.First();
+                MostraDados();
+                pos = 0;
             }
         }
 
-        private void txtVendedor_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnAnterior_Click(object sender, EventArgs e)
         {
-            if (txtVendedor.Text != "")
+            if (pos > 0)
             {
-                regAtual.vendedor = resFuncio.Find(f => f.nome == txtVendedor.Text).cpf;
-            }
-            else
-            {
-                regAtual.vendedor = "";
+                regAtual = resVendas.ElementAt(--pos);
+                MostraDados();
             }
         }
 
-        private void timerVendedor_Tick(object sender, EventArgs e)
+        private void btnProximo_Click(object sender, EventArgs e)
         {
-            string pesquisa = txtVendedor.Text;
-            txtVendedor.Items.Clear();
-            if (pesquisa.Length > 0)
+            if (pos < (resVendas.Count - 1))
             {
-                resFuncio = Servidor.ConverteObject(CRUD.SelecionarTabela("Funcionario", Servidor.Campos(), "Nome LIKE '%" + pesquisa + "%'", "LIMIT 15"));
-
-                foreach (Servidor f in resFuncio)
-                {
-                    txtVendedor.Items.Add(f.nome);
-                }
+                regAtual = resVendas.ElementAt(++pos);
+                MostraDados();
             }
-            timerVendedor.Enabled = false;
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            int mx = (resVendas.Count - 1);
+            if (pos < mx)
+            {
+                regAtual = resVendas.Last();
+                pos = mx;
+                MostraDados();
+            }
         }
     }
 }
