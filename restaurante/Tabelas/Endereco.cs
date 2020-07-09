@@ -13,6 +13,10 @@ namespace restaurante.Tabelas
         public string identificador { get; set; }
         public int numero { get; set; }
 
+        public Endereco()
+        {
+            p = new Pessoas_gen();
+        }
         public List<string> ListarValores()
         {
             return new List<string>

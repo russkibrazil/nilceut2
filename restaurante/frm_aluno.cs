@@ -37,7 +37,7 @@ namespace restaurante
             regAtual.p.nome = txtNome.Text;
             regAtual.p.dnasc = dtNascto.Value;
             regAtual.p.tipoUsuario = "ALUNO";
-            regAtual.ra = int.Parse(txtRa.Text);
+            regAtual.ra = txtRa.Text;
             if (novo && regAtual.p.cpf == "")
             {
                 regAtual.p.Definir_Cpf(RetornaCpf());

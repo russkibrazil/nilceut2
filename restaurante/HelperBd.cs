@@ -46,5 +46,17 @@ namespace restaurante
                 }
             return s;
         }
-    }
+        public static DateTime DataBdparaApp(string e)
+        {
+            string[] vt = e.Split(" ".ToCharArray());
+            string[] dt = vt[0].Split("/".ToCharArray());
+            return new DateTime(int.Parse(dt[0]), int.Parse(dt[1]), int.Parse(dt[2]));
+        }
+        public static string DataAppparaBd(DateTime e)
+        {
+            string[] vt = e.ToString().Split(" ".ToCharArray());
+            string[] dt = vt[0].Split("/".ToCharArray());
+            return dt[2]+"/"+ dt[1]+"/"+dt[0];
+        }
+}
 }

@@ -11,6 +11,10 @@ namespace restaurante.Tabelas
         public Pessoas_gen p { get; set; }
         public string telefone { get; set; }
 
+        public Telefone()
+        {
+            p = new Pessoas_gen();
+        }
         public List<string> ListarValores()
         {
             return new List<string>

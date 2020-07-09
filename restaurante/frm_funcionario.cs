@@ -90,6 +90,7 @@ namespace restaurante
                 InformaDiag.Erro("Nenhum registro encontrado!");
             else
             {
+                regAtual.p = Pessoas_gen.ConverteObject(CRUD.SelecionarTabela("pessoa", Pessoas_gen.Campos(), "CPF=" + regAtual.p.cpf)).First();
                 txtCpf.Text = regAtual.p.cpf;
                 txtNome.Text = regAtual.p.nome;
                 dtNascto.Value = regAtual.p.dnasc;

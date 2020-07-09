@@ -90,7 +90,7 @@
             // 
             // btnApagar
             // 
-            this.btnApagar.Location = new System.Drawing.Point(384, 80);
+            this.btnApagar.Location = new System.Drawing.Point(384, 114);
             this.btnApagar.Margin = new System.Windows.Forms.Padding(4);
             this.btnApagar.Name = "btnApagar";
             this.btnApagar.Size = new System.Drawing.Size(100, 28);
@@ -101,7 +101,7 @@
             // 
             // btnSalva
             // 
-            this.btnSalva.Location = new System.Drawing.Point(384, 44);
+            this.btnSalva.Location = new System.Drawing.Point(384, 78);
             this.btnSalva.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.Size = new System.Drawing.Size(100, 28);
@@ -112,7 +112,7 @@
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(384, 10);
+            this.btnNovo.Location = new System.Drawing.Point(384, 44);
             this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(100, 28);
@@ -167,6 +167,7 @@
             this.Controls.Add(this.btnNovo);
             this.Name = "frm_telefone";
             this.Text = "Telefone";
+            this.Load += new System.EventHandler(this.frm_endereco_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

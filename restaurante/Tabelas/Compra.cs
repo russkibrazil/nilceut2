@@ -11,11 +11,16 @@ namespace restaurante.Tabelas
         public DateTime dt { get; private set; }
         public Pessoas_gen p { get; set; }
 
+        public Compra()
+        {
+            p = new Pessoas_gen();
+        }
+
         public List<string> ListarValores()
         {
             return new List<string>
             {
-                dt.ToString(),
+                HelperBd.DataAppparaBd(dt),
                 p.cpf
             };
         }

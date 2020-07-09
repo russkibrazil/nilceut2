@@ -63,7 +63,7 @@
             // 
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.Location = new System.Drawing.Point(128, 52);
-            this.txtNome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(4);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(608, 30);
             this.txtNome.TabIndex = 11;
@@ -94,7 +94,7 @@
             // 
             this.txtCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCpf.Location = new System.Drawing.Point(128, 14);
-            this.txtCpf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCpf.Margin = new System.Windows.Forms.Padding(4);
             this.txtCpf.Mask = "900,000,000-00";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(168, 30);
@@ -103,7 +103,7 @@
             // btnNovo
             // 
             this.btnNovo.Location = new System.Drawing.Point(812, 17);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(100, 28);
             this.btnNovo.TabIndex = 24;
@@ -114,7 +114,7 @@
             // btnSalva
             // 
             this.btnSalva.Location = new System.Drawing.Point(812, 53);
-            this.btnSalva.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalva.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.Size = new System.Drawing.Size(100, 28);
             this.btnSalva.TabIndex = 25;
@@ -125,7 +125,7 @@
             // btnApagar
             // 
             this.btnApagar.Location = new System.Drawing.Point(812, 92);
-            this.btnApagar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnApagar.Margin = new System.Windows.Forms.Padding(4);
             this.btnApagar.Name = "btnApagar";
             this.btnApagar.Size = new System.Drawing.Size(100, 28);
             this.btnApagar.TabIndex = 26;
@@ -140,7 +140,7 @@
             this.comboSetor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboSetor.FormattingEnabled = true;
             this.comboSetor.Location = new System.Drawing.Point(128, 167);
-            this.comboSetor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboSetor.Margin = new System.Windows.Forms.Padding(4);
             this.comboSetor.Name = "comboSetor";
             this.comboSetor.Size = new System.Drawing.Size(168, 30);
             this.comboSetor.TabIndex = 27;
@@ -150,7 +150,7 @@
             // btnPesquisa
             // 
             this.btnPesquisa.Location = new System.Drawing.Point(305, 17);
-            this.btnPesquisa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPesquisa.Margin = new System.Windows.Forms.Padding(4);
             this.btnPesquisa.Name = "btnPesquisa";
             this.btnPesquisa.Size = new System.Drawing.Size(100, 28);
             this.btnPesquisa.TabIndex = 29;
@@ -250,7 +250,7 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_funcionario";
             this.Text = "Funcionários";
             this.ResumeLayout(false);

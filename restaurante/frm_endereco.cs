@@ -23,11 +23,19 @@ namespace restaurante
             InitializeComponent();
             ndc = nomeDoCliente;
             this.cpf = cpf;
+            resEndereco = Endereco.ConverteObject(CRUD.SelecionarTabela("endereco", Endereco.Campos(), "CPF=" + cpf));
         }
 
         private void frm_endereco_Load(object sender, EventArgs e)
         {
             label4.Text = "Informações de endereço para " + ndc;
+            if (resEndereco.Count > 0)
+            {
+                regAtual = resEndereco.First();
+                MostraDados();
+                if (resEndereco.Count > 1)
+                    AtivaNavegador();
+            }
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -69,7 +77,11 @@ namespace restaurante
             btnPrimeiro_Click(sender, e);
         }
 
-        private void MostraDados() { }
+        private void MostraDados() {
+            comboLogra.Text = regAtual.logradouro;
+            txtDescricao.Text = regAtual.identificador;
+            txtNumero.Text = regAtual.numero.ToString();
+        }
 
         private void AtivaNavegador()
         {

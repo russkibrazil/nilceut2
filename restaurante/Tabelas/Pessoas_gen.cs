@@ -24,7 +24,7 @@ namespace restaurante.Tabelas
             {
                 cpf,
                 nome,
-                dnasc.ToString(),
+                HelperBd.DataAppparaBd(dnasc),
                 tipoUsuario
             };
         }

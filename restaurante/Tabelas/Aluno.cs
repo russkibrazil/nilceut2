@@ -9,8 +9,12 @@ namespace restaurante.Tabelas
     class Aluno
     {
         public Pessoas_gen p { get; set; }
-        public int ra { get; set; }
+        public string ra { get; set; }
 
+        public Aluno()
+        {
+            p = new Pessoas_gen();
+        }
         public List<string> ListarValores()
         {
             return new List<string>
@@ -41,7 +45,7 @@ namespace restaurante.Tabelas
             Aluno ev = new Aluno();
             int i = 0;
             ev.p.Definir_Cpf(entrada[i++].ToString());
-            ev.ra = int.Parse(entrada[i++].ToString());
+            ev.ra = entrada[i++].ToString();
             return ev;
         }
     }

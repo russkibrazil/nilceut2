@@ -14,20 +14,28 @@ namespace restaurante
     public partial class frm_telefone : Form
     {
         Telefone regAtual = new Telefone();
-        List<Telefone> resEndereco = new List<Telefone>();
+        List<Telefone> resTelefone = new List<Telefone>();
         int pos = 0;
         bool novo = true;
-        string ndc, cpf;
+        string ndc, ncpf;
         public frm_telefone(string nomeDoCliente, string cpf)
         {
             InitializeComponent();
             ndc = nomeDoCliente;
-            this.cpf = cpf;
+            ncpf = cpf;
+            resTelefone = Telefone.ConverteObject(CRUD.SelecionarTabela("telefone", Telefone.Campos(), "CPF="+ncpf));
         }
 
         private void frm_endereco_Load(object sender, EventArgs e)
         {
             label4.Text = "Informações de endereço para " + ndc;
+            if (resTelefone.Count > 0)
+            {
+                regAtual = resTelefone.First();
+                MostraDados();
+                if (resTelefone.Count > 1)
+                    AtivaNavegador();
+            }
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -42,7 +50,7 @@ namespace restaurante
             regAtual.telefone = txtTelefone.Text;
             if (novo && regAtual.p.cpf == "")
             {
-                regAtual.p.Definir_Cpf(cpf);
+                regAtual.p.Definir_Cpf(ncpf);
                 if (CRUD.InsereLinha("telefone", Telefone.Campos(), regAtual.ListarValores()) > 0)
                     InformaDiag.InformaSalvo();
             }
@@ -50,8 +58,8 @@ namespace restaurante
             {
                 if (CRUD.UpdateLine("telefone", Telefone.Campos(), regAtual.ListarValores(), "CPF=" + regAtual.p.cpf + " AND Telefone=" + regAtual.telefone ) > 0)
                     InformaDiag.InformaSalvo();
-                resEndereco.RemoveAt(pos);
-                resEndereco.Insert(pos, regAtual);
+                resTelefone.RemoveAt(pos);
+                resTelefone.Insert(pos, regAtual);
             }
             novo = false;
         }
@@ -59,7 +67,7 @@ namespace restaurante
         private void btnApagar_Click(object sender, EventArgs e)
         {
             CRUD.ApagaLinha("telefone", "CPF=" + regAtual.p.cpf + " AND Telefone=" + regAtual.telefone);
-            resEndereco.RemoveAt(pos);
+            resTelefone.RemoveAt(pos);
             btnPrimeiro_Click(sender, e);
         }
 
@@ -86,7 +94,7 @@ namespace restaurante
         {
             if (pos > 0)
             {
-                regAtual = resEndereco.First();
+                regAtual = resTelefone.First();
                 MostraDados();
                 pos = 0;
             }
@@ -96,26 +104,26 @@ namespace restaurante
         {
             if (pos > 0)
             {
-                regAtual = resEndereco.ElementAt(--pos);
+                regAtual = resTelefone.ElementAt(--pos);
                 MostraDados();
             }
         }
 
         private void btnProximo_Click(object sender, EventArgs e)
         {
-            if (pos < (resEndereco.Count - 1))
+            if (pos < (resTelefone.Count - 1))
             {
-                regAtual = resEndereco.ElementAt(++pos);
+                regAtual = resTelefone.ElementAt(++pos);
                 MostraDados();
             }
         }
 
         private void btnUltimo_Click(object sender, EventArgs e)
         {
-            int mx = (resEndereco.Count - 1);
+            int mx = (resTelefone.Count - 1);
             if (pos < mx)
             {
-                regAtual = resEndereco.Last();
+                regAtual = resTelefone.Last();
                 pos = mx;
                 MostraDados();
             }
